@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
+## Download Node.js and AngularCLI
+Node from offical website link : https://nodejs.org/dist/v12.16.1/node-v12.16.1-x64.msi
+AngularCLI Offical link or command: https://angular.io/cli 
+Run `npm install -g @angular/cli`
+
 ## Download And Setup This Project In Local
 
 First clone this repo then cd into folder now run command.
