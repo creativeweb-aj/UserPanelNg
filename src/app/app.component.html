@@ -1,20 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-sidenav-container class="sidenav-container">
-
-    <app-top-nav-bar></app-top-nav-bar>
-
     <mat-sidenav-content>
-
-        <mat-toolbar color="primary">
-              <button
-                  type="button"
-                  aria-label="Toggle sidenav"
-                  mat-icon-button
-                  (click)="opened=!opened">
-                  <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-              </button>
-              <span><img class="logo" src="assets/images/logo.svg"></span>
-        </mat-toolbar>
+        <app-top-nav-bar></app-top-nav-bar>
         <div class="main">
             <router-outlet></router-outlet>
         </div>
