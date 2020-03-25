@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'UserPanelNg';
+  title = 'Users Panel';
+  // this opened for click side nav bar open and close
+  opened = false;
 }

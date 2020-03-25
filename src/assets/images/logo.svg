@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1410" height="1404" viewBox="0 0 1410 1404">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ff3e61;
+        filter: url(#filter);
+      }
+
+      .cls-2 {
+        filter: url(#filter-2);
+      }
+
+      .cls-3 {
+        font-size: 833.333px;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #fff;
+        font-family: Comfortaa;
+        font-weight: 700;
+      }
+
+      .cls-4 {
+        font-size: 875px;
+      }
+    </style>
+    <filter id="filter" x="-13" y="-13" width="1432" height="1432" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="6.325"/>
+      <feFlood result="flood" flood-opacity="0.3"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+    <filter id="filter-2" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="6.325"/>
+      <feFlood result="flood" flood-opacity="0.3"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <circle id="Ellipse_1_copy" data-name="Ellipse 1 copy" class="cls-1" cx="702.5" cy="702.5" r="676.5"/>
+  <g class="cls-2">
+    <text id="C" class="cls-3" x="105" y="1028">C</text>
+    <text id="w" class="cls-4" x="622" y="926.999">w</text>
+  </g>
+</svg>
