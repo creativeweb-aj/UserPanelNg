@@ -4,8 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Download And Setup This Project In Local
 
-First clone this repo then cd into folder now run command below.
-Run `npm install --save-dev <package-name>` package-name is here package.json file replace and run.
+First clone this repo then cd into folder now run command.
+Run `npm install --save-dev <package-name>` <package-name> replace it with package.json file then run.
 
 ## Development server
 
