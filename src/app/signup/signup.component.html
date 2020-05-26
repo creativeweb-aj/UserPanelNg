@@ -1,39 +1,71 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-</button>
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+<div class="signup-form-center">
+    <form class="signup-form" [formGroup]="signUp" (ngSubmit)="onSubmit()">
+      <h1 class="form-title">Create an Account</h1>
+      <div class="singup-full-width">
+        <mat-form-field class="nameField" appearance="outline">
+          <mat-label>First Name *</mat-label>
+          <input matInput formControlName="firstNameFormControl" placeholder="Ex. John" value="">
+          <mat-icon matSuffix aria-hidden="false" aria-label="Email icon">person</mat-icon>
+          <mat-error *ngIf="(firstName.errors?.required)">
+            First name <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="nameField" appearance="outline">
+          <mat-label>Last Name *</mat-label>
+          <input matInput formControlName="lastNameFormControl" placeholder="Ex. Wick" value="">
+          <mat-icon matSuffix aria-hidden="false" aria-label="Email icon">person</mat-icon>
+          <mat-error *ngIf="(lastName.errors?.required)">
+            Last name <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="singup-full-width" appearance="outline">
+        <mat-label>Email *</mat-label>
+        <input matInput formControlName="emailFormControl" [errorStateMatcher]="matcher"
+              placeholder="Ex. pat@example.com">
+        <mat-icon matSuffix aria-hidden="false" aria-label="Email icon">email</mat-icon>
+        <mat-error *ngIf="(userEmail.errors?.email)">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="(userEmail.errors?.required)">
+          Email is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
+      <mat-form-field class="singup-full-width" appearance="outline">
+        <mat-label>Date of Birth *</mat-label>
+        <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="dateofBirthFormControl">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+        <mat-error *ngIf="(dateOfBirth.errors?.required)">
+          Date of birth <strong>required</strong>
+        </mat-error>
+        <!-- <mat-error *ngIf="(dateOfBirth.invalid)">
+          Date of birth <strong>invalid</strong>
+        </mat-error> -->
+      </mat-form-field>
+      <mat-form-field class="singup-full-width" appearance="outline">
+        <mat-label>Password *</mat-label>
+        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="passwordFormControl">
+        <mat-icon class="passEye" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="(password.errors?.required)">
+          Password <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="singup-full-width" appearance="outline">
+        <mat-label>Confirm Password *</mat-label>
+        <input matInput placeholder="Confirm Password" [type]="hide ? 'password' : 'text'" formControlName="confirmPasswordFormControl">
+        <mat-icon class="passEye" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="(confirmPassword.errors?.required)">
+          Password <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="(confirmPassword.hasError('passwordMismatch'))">
+          Password <strong>not match</strong>
+        </mat-error>
+      </mat-form-field>
+      <div class="singup-full-width">
+        <button type="submit" mat-stroked-button color="primary" [disabled]="!signUp.valid">Create Account</button>
+        <p class="login-btn">Already have an account <a mat-button routerLink="/login" color="primary">login</a></p>
+        
       </div>
     </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper>
+</div>

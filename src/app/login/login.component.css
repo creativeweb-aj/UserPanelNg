@@ -1,0 +1,32 @@
+.login-form-center {
+    display: flex;
+    justify-content: center;
+  }
+.login-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+.form-title {
+    text-align: center;
+  }
+  
+.login-full-width {
+    width: 100%;
+  }
+  
+  .nameField {
+    width: 48%;
+  }
+  
+.passEye {
+    cursor: pointer;
+  }
+  
+.login-full-width .mat-form-field + .mat-form-field {
+    margin-left: 4%;
+  }
+.login-full-width a{
+    left: 20px;
+}

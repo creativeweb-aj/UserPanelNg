@@ -1,6 +1,6 @@
-# UserPanelNg Django
+# UserPanel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
 
 ## Download Node.js and AngularCLI
 Node from offical website link: https://nodejs.org/dist/v12.16.1/node-v12.16.1-x64.msi
