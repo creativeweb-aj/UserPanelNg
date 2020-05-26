@@ -1,0 +1,51 @@
+.main {
+  padding: 20px;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  background-color: #fff;
+  width: 200px;
+}
+.sidenav .mat-toolbar {
+  background: inherit;
+  justify-content: center;
+}
+
+.sidenav .mat-toolbar span {
+  font-family: 'Comfortaa', cursive;
+  font-weight: bold;
+  color: #6200EE;
+}
+
+.sidenav .mat-toolbar .logo:focus {
+  outline: none;
+  border: 0;
+}
+.sidenav a {
+  font-size: 20px;
+}
+.sidenav a:hover {
+  color: #448aff;
+}
+
+mat-sidenav-content .mat-toolbar.mat-primary {
+  outline: none;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+mat-sidenav-content .mat-toolbar.mat-primary .logo {
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  vertical-align: middle;
+}
+
+/*# sourceMappingURL=app.component.css.map */

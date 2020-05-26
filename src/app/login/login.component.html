@@ -1,0 +1,29 @@
+<div class="login-form-center">
+    <form class="login-form" [formGroup]="logIn" (ngSubmit)="onSubmit()">
+      <h1 class="form-title">Login to Account</h1>
+      <mat-form-field class="login-full-width" appearance="outline">
+        <mat-label>Email *</mat-label>
+        <input matInput formControlName="emailFormControl" [errorStateMatcher]="matcher"
+              placeholder="Ex. pat@example.com">
+        <mat-icon matSuffix aria-hidden="false" aria-label="Email icon">email</mat-icon>
+        <mat-error *ngIf="(userEmail.errors?.email)">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="(userEmail.errors?.required)">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="login-full-width" appearance="outline">
+        <mat-label>Password *</mat-label>
+        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="passwordFormControl">
+        <mat-icon class="passEye" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="(password.errors?.required)">
+          Password <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <div class="login-full-width">
+        <button type="submit" mat-stroked-button color="primary" [disabled]="!logIn.valid">Login</button>
+        <a mat-button routerLink="/signup" color="primary">Create an new account</a>
+      </div>
+    </form>
+</div>

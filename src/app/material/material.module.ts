@@ -15,6 +15,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -33,7 +36,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatSnackBarModule
   ],
   exports:[
     CommonModule,
@@ -50,7 +56,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }
