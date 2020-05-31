@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators, NG_VALIDATORS, AbstractControl } from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { Action } from 'rxjs/internal/scheduler/Action';
+import { throwError } from 'rxjs';
+import {AuthServicesService} from '../auth-services.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -20,6 +24,14 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
   hide = true;
+
+  responseData = {
+    status: '',
+    response: {},
+    token: '',
+    message: '',
+    detail: ''
+  };
 
   logIn = this.logInForm.group({
     emailFormControl : new FormControl('', [
@@ -40,23 +52,61 @@ export class LoginComponent implements OnInit {
   }
 
   matcher = new MyErrorStateMatcher();
-
-  constructor(private logInForm: FormBuilder, private _snackBar: MatSnackBar) { }
+  
+  constructor(
+    private Authguardservice: AuthServicesService,
+    private logInForm: FormBuilder, 
+    private _snackBar: MatSnackBar,
+    private http: HttpClient,
+    private router: Router) { }
 
   ngOnInit(): void {
+    if (this.Authguardservice.getToken()) {  
+      this.router.navigateByUrl("/");  
+    }
   }
 
   onSubmit(){
     console.info(this.logIn.value);
-    this.openSnackBar();
-  }
+    // get user data
+    let url = "http://192.168.1.101:8000/auth/login/";
+    let data = {
+      "email": this.userEmail.value,
+	    "password": this.password.value
+    };
+    debugger
+    this.http.post(url, data)
+    .pipe(
+      catchError(err => {
+          this._snackBar.open(err.error.detail, 'Ok', {
+            duration: 3000,
+          });
+          return throwError(err);
+        })
+    )
+    .subscribe((response: any)=>{
+      debugger
+      this.responseData = response;
+      if(this.responseData.status == "SUCCESS"){
+        console.info(this.responseData);
+        // set token in local storage
+        localStorage.setItem('UserToken', this.responseData.token) 
+        this._snackBar.open(this.responseData.message, 'Ok', {
+          duration: 3000,
+        }).afterDismissed().subscribe(() => {
+            this.router.navigate(['/']);
+        });
+          
+      }else{
 
-  openSnackBar(){
-    let message = 'Login Successfully';
-    let action = 'Ok';
-    this._snackBar.open(message, action, {
-      duration: 5000,
+          this._snackBar.open(this.responseData.message, 'Ok', {
+            duration: 3000,
+          });
+    
+      }
     });
   }
+
+ 
 
 }

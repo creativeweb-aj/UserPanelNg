@@ -1,0 +1,9 @@
+.center{
+  display: flex;
+  justify-content: center;
+}
+
+.example-card {
+  text-align: center;
+  width: 100%;
+}

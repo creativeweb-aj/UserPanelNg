@@ -7,7 +7,8 @@
         </mat-toolbar>
         <mat-nav-list>
             <a mat-list-item routerLink="/" (click)="sidenav.toggle()">Home</a>
-            <a mat-list-item routerLink="/login" (click)="sidenav.toggle()">Account</a>
+            <a mat-list-item routerLink="/login" *ngIf="!Authguardservice.getToken()" (click)="sidenav.toggle()" >Account</a>
+            <a mat-list-item routerLink="/logout" *ngIf="Authguardservice.getToken()" (click)="sidenav.toggle()">Logout</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
