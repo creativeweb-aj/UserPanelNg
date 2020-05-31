@@ -1,0 +1,23 @@
+<div class="otp-form-center">
+    <form class="otp-form" [formGroup]="otpVerification" (ngSubmit)="onSubmit()">
+      <h1 class="form-title">Account verification</h1>
+      <h3>Please verify this email <strong>{{email}}</strong></h3>
+      <p>We already sent an email to this. Enter your OTP here.</p>
+      <mat-form-field class="otp-full-width" appearance="outline">
+        <mat-label>OTP</mat-label>
+        <input matInput formControlName="otpFormControl" placeholder="Enter your OTP to verify email">
+        <mat-error *ngIf="(otp.errors?.required)">
+            OTP is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="(otp.errors?.maxlength)">
+            OTP <strong>max length</strong> is only 6
+        </mat-error>
+        <mat-error *ngIf="(otp.errors?.pattern)">
+            OTP is a <strong>numeric</strong> value only
+        </mat-error>
+      </mat-form-field>
+      <div class="otp-full-width">
+        <button type="submit" mat-stroked-button color="primary" [disabled]="!otpVerification.valid">Confirm</button>
+      </div>
+    </form>
+</div>
