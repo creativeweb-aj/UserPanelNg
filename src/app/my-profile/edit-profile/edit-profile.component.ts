@@ -61,6 +61,10 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  uploadFile(file){
+    
+  }
+
   onSubmit(){
 
   }

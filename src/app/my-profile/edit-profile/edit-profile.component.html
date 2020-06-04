@@ -19,6 +19,7 @@
           </mat-error>
         </mat-form-field>
       </div>
+      <input formControlName="profilePicField" type="file" accept="image/*">
       <mat-form-field class="profile-full-width" appearance="outline">
         <mat-label>Profession</mat-label>
         <input matInput placeholder="profession" formControlName="categoryField">
@@ -29,7 +30,7 @@
       </mat-form-field>
       <mat-form-field class="profile-full-width" appearance="outline">
         <mat-label>Bio</mat-label>
-        <input matInput placeholder="Bio" formControlName="bioField">
+        <textarea matInput formControlName="bioField" placeholder="Bio"></textarea>
         <mat-icon matSuffix aria-hidden="false" aria-label="description icon">description</mat-icon>
         <mat-error *ngIf="(bio.errors?.required)">
            Bio is <strong>required</strong>

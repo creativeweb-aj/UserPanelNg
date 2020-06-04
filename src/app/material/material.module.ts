@@ -39,7 +39,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatAutocompleteModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   exports:[
     CommonModule,
@@ -59,7 +59,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatAutocompleteModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ]
 })
 export class MaterialModule { }

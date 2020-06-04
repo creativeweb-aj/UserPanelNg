@@ -21,6 +21,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { EditProfileComponent } from './my-profile/edit-profile/edit-profile.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
