@@ -3,19 +3,23 @@
     justify-content: center;
 }
 .profile-form {
-min-width: 150px;
-max-width: 500px;
-width: 100%;
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
 }
 
 .form-title {
-text-align: center;
+    text-align: center;
 }
 
 .profile-full-width {
-width: 100%;
+    width: 100%;
 }
 
 .nameField {
-width: 48%;
+    width: 48%;
+}
+
+.profile-full-width .mat-form-field + .mat-form-field {
+    margin-left: 4%;
 }

@@ -31,17 +31,25 @@
       <mat-form-field class="profile-full-width" appearance="outline">
         <mat-label>Profession</mat-label>
         <input matInput placeholder="profession" formControlName="categoryField">
-        
+        <mat-icon matSuffix aria-hidden="false" aria-label="Profession icon">work</mat-icon>
+        <mat-error *ngIf="(category.errors?.required)">
+            Profession field is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="profile-full-width" appearance="outline">
         <mat-label>Bio</mat-label>
         <input matInput placeholder="Bio" formControlName="bioField">
-       
+        <mat-icon matSuffix aria-hidden="false" aria-label="description icon">description</mat-icon>
+        <mat-error *ngIf="(bio.errors?.required)">
+           Bio is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="profile-full-width" appearance="outline">
         <mat-label>Contact</mat-label>
         <input matInput placeholder="Contact" formControlName="contactInfoField">
-       
+        <mat-error *ngIf="(contactInfo.errors?.required)">
+            Contact is <strong>required</strong>
+          </mat-error>
       </mat-form-field>
       <div class="profile-full-width">
         <button type="submit" mat-stroked-button color="primary" [disabled]="!editProfile.valid">Save</button>
