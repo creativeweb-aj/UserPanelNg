@@ -48,19 +48,3 @@
 	color: gray;
 	margin-bottom: 30px;
 }
-.lower-container .btn{
-	padding: 12px 20px;
-	background: #673ab7;
-	border: none;
-	color: white;
-	border-radius: 30px;
-	font-size: 12px;
-	text-decoration: none;
-	font-weight: bold;
-	transition: all .3s ease-in;
-}
-.lower-container .btn:hover{
-	background: transparent;
-	color: #673ab7;
-	border: 2px solid #673ab7;
-}

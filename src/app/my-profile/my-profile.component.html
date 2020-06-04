@@ -1,5 +1,3 @@
-
-
 <mat-card class="profile-card">
     <div class="upper-container" color="primary">
       <div class="image-container">
@@ -15,7 +13,10 @@
         <p>sodales accumsan ligula. Aenean sed diam tristique, fermentum mi nec, ornare arcu.</p>
       </div>
       <div>
-        <a routerLink="/profile/editprofile" class="btn">Edit profile</a>
+        <a mat-stroked-button routerLink="/profile/editprofile" color="primary">
+          <mat-icon aria-hidden="false" aria-label="Edit Profile icon">edit</mat-icon>
+          Edit profile
+        </a>
       </div>
     </div>
 </mat-card>
