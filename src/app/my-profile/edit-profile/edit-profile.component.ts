@@ -18,9 +18,6 @@ export class EditProfileComponent implements OnInit {
     lastNameField : new FormControl('', [
       Validators.required,
     ]),
-    dateOfBirthField : new FormControl('', [
-      Validators.required,
-    ]),
     categoryField : new FormControl('', [
       Validators.required,
     ]),
@@ -44,10 +41,6 @@ export class EditProfileComponent implements OnInit {
     return this.editProfile.get('lastNameField')
   }
 
-  get dob(){
-    return this.editProfile.get('dateOfBirthField')
-  }
-
   get category(){
     return this.editProfile.get('categoryField')
   }
@@ -60,12 +53,9 @@ export class EditProfileComponent implements OnInit {
     return this.editProfile.get('contactInfoField')
   }
 
-  maxDate: Date;
   
   constructor(private profileForm: FormBuilder) { 
-    // setting max date in date picker max current year
-    const currentYear = new Date().getFullYear();
-    this.maxDate = new Date(currentYear + 0, 11, 31);
+    
   }
 
   ngOnInit(): void {
