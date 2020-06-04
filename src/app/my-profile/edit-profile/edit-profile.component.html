@@ -1,0 +1,51 @@
+<div class="profile-form-center">
+    <form class="profile-form" [formGroup]="editProfile" (ngSubmit)="onSubmit()">
+      <h1 class="form-title">Edit Profile</h1>
+      <div class="profile-full-width">
+        <mat-form-field class="nameField" appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstNameField" placeholder="Ex. John" value="">
+          <mat-icon matSuffix aria-hidden="false" aria-label="user icon">person</mat-icon>
+          <mat-error *ngIf="(firstName.errors?.required)">
+            First name <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="nameField" appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastNameField" placeholder="Ex. Wick" value="">
+          <mat-icon matSuffix aria-hidden="false" aria-label="user icon">person</mat-icon>
+          <mat-error *ngIf="(lastName.errors?.required)">
+            Last name <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="profile-full-width" appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="dateOfBirthField">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+        <mat-error *ngIf="(dob.errors?.required)">
+          Date of birth <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="profile-full-width" appearance="outline">
+        <mat-label>Profession</mat-label>
+        <input matInput placeholder="profession" formControlName="categoryField">
+        
+      </mat-form-field>
+      <mat-form-field class="profile-full-width" appearance="outline">
+        <mat-label>Bio</mat-label>
+        <input matInput placeholder="Bio" formControlName="bioField">
+       
+      </mat-form-field>
+      <mat-form-field class="profile-full-width" appearance="outline">
+        <mat-label>Contact</mat-label>
+        <input matInput placeholder="Contact" formControlName="contactInfoField">
+       
+      </mat-form-field>
+      <div class="profile-full-width">
+        <button type="submit" mat-stroked-button color="primary" [disabled]="!editProfile.valid">Save</button>
+        
+      </div>
+    </form>
+</div>

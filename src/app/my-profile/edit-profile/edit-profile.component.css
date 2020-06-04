@@ -1,0 +1,21 @@
+.profile-form-center {
+    display: flex;
+    justify-content: center;
+}
+.profile-form {
+min-width: 150px;
+max-width: 500px;
+width: 100%;
+}
+
+.form-title {
+text-align: center;
+}
+
+.profile-full-width {
+width: 100%;
+}
+
+.nameField {
+width: 48%;
+}

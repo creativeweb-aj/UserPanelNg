@@ -21,6 +21,24 @@
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
             <span><img class="logo" routerLink="/" src="assets/images/logo1.png"></span>
+            <span class="profile-spacer"></span>
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button [matMenuTriggerFor]="profile">
+                <img class="profile-pic" src="assets/images/logo1.png">
+            </button>
+            <mat-menu #profile="matMenu">
+                <button mat-menu-item routerLink="/profile">
+                    <mat-icon aria-hidden="false" aria-label="user profile icon">account_circle</mat-icon>
+                    My Profile
+                </button>
+                <button mat-menu-item routerLink="/login" *ngIf="!Authguardservice.getToken()">
+                    <mat-icon aria-hidden="false" aria-label="login icon">login</mat-icon>
+                    Log in
+                </button>
+                <button mat-menu-item routerLink="/logout" *ngIf="Authguardservice.getToken()">
+                    <mat-icon aria-hidden="false" aria-label="logout icon">exit_to_app</mat-icon>
+                    Log out
+                </button>
+            </mat-menu>
         </mat-toolbar>
 
         <div class="main">

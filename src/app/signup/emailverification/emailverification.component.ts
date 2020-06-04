@@ -50,7 +50,7 @@ export class EmailverificationComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.Authguardservice.getToken()) {  
-      this.router.navigateByUrl("");  
+      this.router.navigateByUrl("login/");  
     }
 
     // get param user id

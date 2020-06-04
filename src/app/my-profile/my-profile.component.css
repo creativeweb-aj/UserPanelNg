@@ -1,0 +1,12 @@
+mat-card-header {
+    height: 300px;
+}
+
+.profile-header-image img{
+    width: 200px;
+    height: 200px;
+}
+
+.profile-name {
+    vertical-align: middle;
+}
