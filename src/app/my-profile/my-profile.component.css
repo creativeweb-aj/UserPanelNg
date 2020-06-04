@@ -3,6 +3,20 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.follow {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-evenly;
+    flex-grow: initial;
+}
+
+.follow span {
+    color: #673ab7;
+}
+
 .upper-container{
     flex: 1;
     flex-direction: row;
@@ -46,5 +60,7 @@
 .lower-container p{
 	font-size: 16px;
 	color: gray;
-	margin-bottom: 30px;
+    margin-bottom: 30px;
+    text-align: justify;
+    justify-content: space-evenly;
 }
