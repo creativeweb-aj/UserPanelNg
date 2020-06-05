@@ -23,3 +23,20 @@
 .profile-full-width .mat-form-field + .mat-form-field {
     margin-left: 4%;
 }
+
+#proPic {
+    visibility: hidden;
+}
+.profilePic {
+    padding-left: 40px;
+}
+
+.profileImg {
+    margin: 20px;
+}
+
+.showPic {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}

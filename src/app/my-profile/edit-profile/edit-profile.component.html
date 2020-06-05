@@ -19,7 +19,11 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <input formControlName="profilePicField" type="file" accept="image/*">
+      <div class="profileImg">
+        <img [src]="url" class="showPic" alt="profile picture">
+        <label for="proPic" class="profilePic"><img src="/assets/images/upload.png" alt="upload"></label>
+        <input id="proPic" formControlName="profilePicField" type="file" (change)="uploadFile($event)" accept="image/*">
+      </div>
       <mat-form-field class="profile-full-width" appearance="outline">
         <mat-label>Profession</mat-label>
         <input matInput placeholder="profession" formControlName="categoryField">

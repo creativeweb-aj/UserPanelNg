@@ -61,8 +61,16 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  url = '/assets/images/profilepic.png';
+
   uploadFile(file){
-    
+    if(file.target.files){
+      var reader = new FileReader();
+      reader.readAsDataURL(file.target.files[0]);
+      reader.onload=(event:any)=>{
+        this.url = event.target.result;
+      }
+    }
   }
 
   onSubmit(){
