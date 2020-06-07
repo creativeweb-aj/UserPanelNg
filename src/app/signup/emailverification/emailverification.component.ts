@@ -17,10 +17,7 @@ export class EmailverificationComponent implements OnInit {
 
   responseData = {
     status: '',
-    response: {
-        id: '',
-        email: '',
-    },
+    response: '',
     message: ''
   };
 
@@ -76,7 +73,7 @@ export class EmailverificationComponent implements OnInit {
       this.responseData = response;
       if(this.responseData.status == "SUCCESS"){
         console.info(this.responseData);
-        this.email = this.responseData.response.email;
+        this.email = this.responseData.response;
       }
     });
 

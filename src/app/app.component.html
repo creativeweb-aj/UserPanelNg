@@ -23,7 +23,7 @@
             <span><img class="logo" routerLink="/" src="assets/images/logo1.png"></span>
             <span class="profile-spacer"></span>
             <button type="button" aria-label="Toggle sidenav" mat-icon-button [matMenuTriggerFor]="profile">
-                <img class="profile-pic" src="assets/images/logo1.png">
+                <img class="profile-pic" [src]="profileImage">
             </button>
             <mat-menu #profile="matMenu">
                 <button mat-menu-item routerLink="/profile">

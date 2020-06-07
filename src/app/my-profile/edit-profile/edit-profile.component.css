@@ -40,3 +40,7 @@
     height: 100px;
     border-radius: 10px;
 }
+
+mage-cropper {
+    display: none;
+}

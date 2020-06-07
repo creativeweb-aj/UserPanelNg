@@ -54,7 +54,7 @@ mat-sidenav-content .mat-toolbar.mat-primary .logo {
   cursor: pointer;
   width: 35px;
   height: 35px;
-  vertical-align: middle;
+  border-radius: 20px;
 }
 
 .profile-spacer {

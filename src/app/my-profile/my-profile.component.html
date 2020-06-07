@@ -1,13 +1,13 @@
 <mat-card class="profile-card">
     <div class="upper-container" color="primary">
       <div class="image-container">
-        <img src="assets/images/logo.svg" />
+        <img [src]="imgUrl" alt="profile image">
       </div>
     </div>
     <div class="lower-container">
       <div>
-        <h3><strong>Alaina Wick</strong></h3>
-        <h4>Front-end Developer</h4>
+        <h3><strong>{{responseData.response.first_name}} {{responseData.response.last_name}}</strong></h3>
+        <h4>{{responseData.response.profession}}</h4>
       </div>
       <div class="follow">
         <div>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div>
-        <p>Angular Layout also has a huge set of responsive features that enable developers to easily change the UX layout configurations for different display devices. See the our documentation on the Responsive</p>
+        <p>{{responseData.response.biography}}</p>
       </div>
       <div>
         <a mat-stroked-button routerLink="/profile/editprofile" color="primary">
