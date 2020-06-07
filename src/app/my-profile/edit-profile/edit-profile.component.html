@@ -1,0 +1,69 @@
+<div class="profile-form-center">
+    <form class="profile-form" [formGroup]="editProfile" (ngSubmit)="onSubmit()">
+      <h1 class="form-title">Edit Profile</h1>
+      <div class="profile-full-width">
+        <mat-form-field class="nameField" appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstNameField" placeholder="Ex. John" value="">
+          <mat-icon matSuffix aria-hidden="false" aria-label="user icon">person</mat-icon>
+          <mat-error *ngIf="(firstName.errors?.required)">
+            First name <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="nameField" appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastNameField" placeholder="Ex. Wick" value="">
+          <mat-icon matSuffix aria-hidden="false" aria-label="user icon">person</mat-icon>
+          <mat-error *ngIf="(lastName.errors?.required)">
+            Last name <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="profileImg">
+        <img [src]="imgUrl" class="showPic" alt="profile picture">
+        <label for="proPic" class="profilePic"><img src="/assets/images/upload.png" alt="upload"></label>
+        <input id="proPic" formControlName="profilePicField" type="file" (change)="uploadFile($event)" accept="image/*">
+        <!-- <image-cropper
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="4 / 4"
+            format="jpg"
+            (imageCropped)="imageCropped($event)"
+            (imageLoaded)="imageLoaded()"
+            (cropperReady)="cropperReady()"
+            (loadImageFailed)="loadImageFailed()"
+        ></image-cropper> -->
+      </div>
+      <mat-form-field class="profile-full-width" appearance="outline">
+        <mat-label>Profession</mat-label>
+        <input matInput placeholder="profession" formControlName="categoryField">
+        <mat-icon matSuffix aria-hidden="false" aria-label="Profession icon">work</mat-icon>
+        <mat-error *ngIf="(category.errors?.required)">
+            Profession field is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="profile-full-width" appearance="outline">
+        <mat-label>Bio</mat-label>
+        <textarea matInput formControlName="bioField" placeholder="Bio"></textarea>
+        <mat-icon matSuffix aria-hidden="false" aria-label="description icon">description</mat-icon>
+        <mat-error *ngIf="(bio.errors?.required)">
+           Bio is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="profile-full-width" appearance="outline">
+        <mat-label>Contact</mat-label>
+        <input matInput placeholder="Contact" formControlName="contactInfoField">
+        <mat-icon matSuffix aria-hidden="false" aria-label="contact icon">contact_phone</mat-icon>
+        <mat-error *ngIf="(contactInfo.errors?.required)">
+            Contact is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="(contactInfo.errors?.pattern)">
+          Contact is <strong>number only</strong>
+        </mat-error>
+      </mat-form-field>
+      <div class="profile-full-width">
+        <button type="submit" mat-stroked-button color="primary" [disabled]="!editProfile.valid">Save</button>
+      </div>
+    </form>
+</div>
+

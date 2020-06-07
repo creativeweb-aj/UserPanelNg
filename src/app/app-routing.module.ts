@@ -8,6 +8,8 @@ import { SignupComponent } from './signup/signup.component';
 import { EmailverificationComponent } from './signup/emailverification/emailverification.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import {MyProfileComponent} from './my-profile/my-profile.component';
+import {EditProfileComponent} from './my-profile/edit-profile/edit-profile.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 
 // set urls here for routing
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'verification/:id', component: EmailverificationComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent, pathMatch: 'full'},
   { path: 'logout', component: LogoutComponent, pathMatch: 'full' },
+  { path: 'profile', component: MyProfileComponent, pathMatch: 'full' },
+  { path: 'profile/editprofile', component: EditProfileComponent, pathMatch: 'full' },
   { path: '**', component: NotfoundComponent, pathMatch: 'full' },
 ];
 

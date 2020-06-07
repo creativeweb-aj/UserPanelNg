@@ -29,6 +29,7 @@ export class SignupComponent implements OnInit {
   emailId = '';
   responseData = {
     status: '',
+    keyId: '',
     response: {
         id: '',
         email: '',
@@ -143,7 +144,7 @@ export class SignupComponent implements OnInit {
         this._snackBar.open(this.responseData.message, 'Ok', {
           duration: 3000,
         }).afterDismissed().subscribe(() => {
-            this.router.navigate(['/verification', this.responseData.response.id]);
+            this.router.navigate(['/verification', this.responseData.keyId]);
         });
 
       }else{

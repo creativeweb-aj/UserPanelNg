@@ -1,0 +1,35 @@
+<mat-card class="profile-card">
+    <div class="upper-container" color="primary">
+      <div class="image-container">
+        <img [src]="imgUrl" alt="profile image">
+      </div>
+    </div>
+    <div class="lower-container">
+      <div>
+        <h3><strong>{{responseData.response.first_name}} {{responseData.response.last_name}}</strong></h3>
+        <h4>{{responseData.response.profession}}</h4>
+      </div>
+      <div class="follow">
+        <div>
+          <h2>Followers</h2> 
+          <span><strong>199K</strong></span>
+        </div>
+        <div>
+          <h2>Followings</h2> 
+          <span><strong>99K</strong></span>
+        </div>
+      </div>
+      <div>
+        <p>{{responseData.response.biography}}</p>
+      </div>
+      <div>
+        <a mat-stroked-button routerLink="/profile/editprofile" color="primary">
+          <mat-icon aria-hidden="false" aria-label="Edit Profile icon">edit</mat-icon>
+          Edit profile
+        </a>
+      </div>
+    </div>
+</mat-card>
+
+  
+  

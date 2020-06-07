@@ -94,7 +94,7 @@ export class LoginComponent implements OnInit {
         this._snackBar.open(this.responseData.message, 'Ok', {
           duration: 3000,
         }).afterDismissed().subscribe(() => {
-            this.router.navigate(['/']);
+            this.router.navigate(['/profile']);
         });
           
       }else{
