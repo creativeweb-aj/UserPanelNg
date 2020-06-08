@@ -21,8 +21,7 @@
       </div>
       <mat-form-field class="singup-full-width" appearance="outline">
         <mat-label>Email *</mat-label>
-        <input matInput formControlName="emailFormControl" [errorStateMatcher]="matcher"
-              placeholder="Ex. pat@example.com">
+        <input matInput formControlName="emailFormControl" placeholder="Ex. pat@example.com">
         <mat-icon matSuffix aria-hidden="false" aria-label="Email icon">email</mat-icon>
         <mat-error *ngIf="(userEmail.errors?.email)">
           Please enter a valid email address

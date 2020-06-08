@@ -16,7 +16,6 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { EmailverificationComponent } from './signup/emailverification/emailverification.component';
-import { LogoutComponent } from './logout/logout.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { EditProfileComponent } from './my-profile/edit-profile/edit-profile.component';
@@ -29,7 +28,6 @@ import { EditProfileComponent } from './my-profile/edit-profile/edit-profile.com
     HomeComponent,
     LoginComponent,
     EmailverificationComponent,
-    LogoutComponent,
     NotfoundComponent,
     MyProfileComponent,
     EditProfileComponent

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators, NG_VALIDATORS, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { AuthServicesService } from 'src/app/auth-services.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -16,13 +15,20 @@ export class EditProfileComponent implements OnInit {
 
   responseData = {
     status: '',
-    response: {},
+    response: {
+      first_name: '',
+      last_name: '',
+      contact: '',
+      profession: '',
+      biography: '',
+      profile_picture: ''
+    },
     message: ''
   };
 
   editProfile = this.profileForm.group({
     profilePicField : new FormControl('', [
-      Validators.required,
+      //Validators.required,
     ]),
     firstNameField : new FormControl('', [
       Validators.required,
@@ -68,55 +74,65 @@ export class EditProfileComponent implements OnInit {
 
   
   constructor(
-    private Authguardservice: AuthServicesService,
     private profileForm: FormBuilder,
     private _snackBar: MatSnackBar,
     private http: HttpClient,
-    private router: Router) { 
-    
-  }
+    private router: Router) { }
 
   ngOnInit(): void {
-    if (!this.Authguardservice.getToken()) {
-      this.router.navigateByUrl("/login");
-    }
+    this.loadProfile();
   }
 
-  imgUrl = '/assets/images/profilepic.png';
+  imgUrl = 'assets/images/profilepic.png';
   profileImage = '';
 
-  imageChangedEvent: any = '';
+  imageChangedEvent: boolean = false ;
 
   uploadFile(file){
     if(file.target.files){
       this.profileImage = file.target.files[0];
-      this.imageChangedEvent = file;
-      
       var reader = new FileReader();
       reader.readAsDataURL(file.target.files[0]);
       reader.onload=(event:any)=>{
         this.imgUrl = event.target.result;
-        console.info(event)
+        this.imageChangedEvent = true;
       }
     }
   }
 
+  loadProfile(){
+    // get user data
+    let url = "http://192.168.1.101:8000/auth/profile/";
+    let token = localStorage.getItem("UserToken");
+    let header = new HttpHeaders(
+      {'Authorization': 'token '+ token}
+    );
+    
+    this.http.get(url, {headers: header})
+    .pipe(
+      catchError(err => {
+          this._snackBar.open(err.error.detail, 'Ok', {
+            duration: 3000,
+          });
+          return throwError(err);
+        })
+    )
+    .subscribe((response: any)=>{
+      this.responseData = response;
+      if(this.responseData.status == "SUCCESS"){
+        console.info(this.responseData);
+        this.firstName.setValue(this.responseData.response.first_name);
+        this.lastName.setValue(this.responseData.response.last_name);
+        this.imgUrl = 'http://192.168.1.101:8000'+this.responseData.response.profile_picture;
+        this.category.setValue(this.responseData.response.profession);
+        this.bio.setValue(this.responseData.response.biography);
+        this.contactInfo.setValue(this.responseData.response.contact);
+      }
+    });
+  }
 
-  // imageCropped(event: ImageCroppedEvent) {
-  //   this.imgUrl = event.base64;
-  // }
-  // imageLoaded() {
-  //   // show cropper
-  // }
-  // cropperReady() {
-  //     // cropper ready
-  // }
-  // loadImageFailed() {
-  //     // show message
-  // }
 
   onSubmit(){
-    debugger
     let url = "http://192.168.1.101:8000/auth/edit-profile/";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
@@ -126,7 +142,12 @@ export class EditProfileComponent implements OnInit {
     var formdata = new FormData();
     formdata.append('firstName', this.firstName.value)
     formdata.append('lastName', this.lastName.value)
-    formdata.append('profilePic', this.profileImage)
+    if (this.imageChangedEvent){
+      formdata.append('profilePic', this.profileImage)
+      formdata.append('profileChange', 'True')
+    }else{
+      formdata.append('profileChange', 'False')
+    }
     formdata.append('profession', this.category.value)
     formdata.append('bio', this.bio.value)
     formdata.append('contact', this.contactInfo.value)

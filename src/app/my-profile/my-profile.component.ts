@@ -27,7 +27,7 @@ export class MyProfileComponent implements OnInit {
     message: ''
   };
 
-  imgUrl = '';
+  imgUrl = 'assets/images/dummyprofile.png';
 
   constructor(
     private appnavbarlogo: AppComponent,
@@ -37,11 +37,10 @@ export class MyProfileComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    if (!this.Authguardservice.getToken()) {
-      this.router.navigateByUrl("/login");
-      return
-    }
+    this.loadProfile();
+  }
 
+  loadProfile(){
     // get user data
     let url = "http://192.168.1.101:8000/auth/profile/";
     let token = localStorage.getItem("UserToken");
@@ -59,14 +58,24 @@ export class MyProfileComponent implements OnInit {
         })
     )
     .subscribe((response: any)=>{
+      debugger
       this.responseData = response;
       if(this.responseData.status == "SUCCESS"){
         console.info(this.responseData);
-        this.imgUrl = 'http://192.168.1.101:8000'+this.responseData.response.profile_picture;
-        this.appnavbarlogo.profileImage = 'http://192.168.1.101:8000'+this.responseData.response.profile_picture;
+        if(this.responseData.response.profile_picture != null){
+          this.imgUrl = 'http://192.168.1.101:8000'+this.responseData.response.profile_picture;
+        }else{
+          this.imgUrl = 'assets/images/dummyprofile.png';
+        }
+        if(this.responseData.response.profile_picture != null){
+          this.appnavbarlogo.profileImage = 'http://192.168.1.101:8000'+this.responseData.response.profile_picture;
+        }else{
+          this.appnavbarlogo.profileImage = 'assets/images/dummyprofile.png';
+        }
       }
     });
-
   }
+   
+    
 
 }
