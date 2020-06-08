@@ -7,6 +7,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { throwError } from 'rxjs';
 import {AuthServicesService} from '../auth-services.service';
+import {AppComponent} from '../app.component';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -54,6 +55,7 @@ export class LoginComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   
   constructor(
+    private appnavbarlogo: AppComponent,
     private Authguardservice: AuthServicesService,
     private logInForm: FormBuilder, 
     private _snackBar: MatSnackBar,
@@ -64,6 +66,7 @@ export class LoginComponent implements OnInit {
     if (this.Authguardservice.getToken()) {  
       this.router.navigateByUrl("/");  
     }
+    this.appnavbarlogo.profileImage = 'assets/images/dummyprofile.png';
   }
 
   onSubmit(){

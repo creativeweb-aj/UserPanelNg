@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators, NG_VALIDATORS, AbstractControl } from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {CustomValidationService} from './validator'
@@ -8,14 +7,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { AuthServicesService } from '../auth-services.service';
-
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
 
 
 
@@ -26,7 +17,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SignupComponent implements OnInit {
   hide = true;
-  emailId = '';
+
+
   responseData = {
     status: '',
     keyId: '',
@@ -90,7 +82,6 @@ export class SignupComponent implements OnInit {
     return this.signUp.get("confirmPasswordFormControl");
   }
 
-  matcher = new MyErrorStateMatcher();
 
   maxDate: Date;
 
@@ -108,15 +99,13 @@ export class SignupComponent implements OnInit {
     }
 
   ngOnInit() {
-    if (this.Authguardservice.getToken()) {  
-      this.router.navigateByUrl("/");  
-    }
+    
   }
 
   onSubmit(){
     console.info(this.signUp.value);
     let timestamp = (new Date(this.dateOfBirth.value)).getTime() / 1000;
-    console.info(timestamp);
+    
     let url = "http://192.168.1.101:8000/auth/register/";
     let data = {
       "first_name": this.firstName.value,
