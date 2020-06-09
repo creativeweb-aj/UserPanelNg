@@ -1,6 +1,5 @@
 import { Component, OnInit, Input  } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators, NG_VALIDATORS, AbstractControl } from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -33,8 +32,6 @@ export class EmailverificationComponent implements OnInit {
     return this.otpVerification.get('otpFormControl')
   }
 
-  myParam: string;
-  email: string;
 
   constructor(
     private Authguardservice: AuthServicesService,
@@ -49,10 +46,15 @@ export class EmailverificationComponent implements OnInit {
     if (this.Authguardservice.getToken()) {  
       this.router.navigateByUrl("login/");  
     }
+    
+    this.getUserEmailId();
+  }
 
+  myParam: string;
+  email: string;
+  getUserEmailId(){
     // get param user id
     this.route.params.subscribe((params: Params) => this.myParam = params['id']);
-    console.info(this.myParam);
 
     // get user data
     let url = "http://192.168.1.101:8000/auth/userdata/";
@@ -76,10 +78,7 @@ export class EmailverificationComponent implements OnInit {
         this.email = this.responseData.response;
       }
     });
-
   }
-
-  userId = this.router.parseUrl['id']
   
   onSubmit(){
     let url = "http://192.168.1.101:8000/auth/verification/";
