@@ -19,6 +19,10 @@ import { EmailverificationComponent } from './signup/emailverification/emailveri
 import { NotfoundComponent } from './notfound/notfound.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { EditProfileComponent } from './my-profile/edit-profile/edit-profile.component';
+import { PostsComponent } from './posts/posts.component';
+import { PostDetailsComponent } from './posts/post-details/post-details.component';
+
+// post services
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import { EditProfileComponent } from './my-profile/edit-profile/edit-profile.com
     EmailverificationComponent,
     NotfoundComponent,
     MyProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    PostsComponent,
+    PostDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,8 @@ import { EditProfileComponent } from './my-profile/edit-profile/edit-profile.com
     MaterialModule
   ],
   providers: [
-    AuthServicesService
+    AuthServicesService,
+
   ],
   bootstrap: [AppComponent]
 })

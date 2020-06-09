@@ -10,6 +10,8 @@ import { LoginComponent } from './login/login.component';
 import {MyProfileComponent} from './my-profile/my-profile.component';
 import {EditProfileComponent} from './my-profile/edit-profile/edit-profile.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { PostsComponent } from './posts/posts.component';
+import { PostDetailsComponent } from './posts/post-details/post-details.component';
 
 // set urls here for routing
 const routes: Routes = [
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full'},
   { path: 'profile', component: MyProfileComponent, pathMatch: 'full', canActivate:[AuthenticationGuard]},
   { path: 'profile/editprofile', component: EditProfileComponent, pathMatch: 'full', canActivate:[AuthenticationGuard]},
+  { path: 'post', component: PostsComponent, pathMatch: 'full', canActivate:[AuthenticationGuard]},
+  { path: 'post/:id', component: PostDetailsComponent, pathMatch: 'full', canActivate:[AuthenticationGuard]},
   { path: '**', component: NotfoundComponent, pathMatch: 'full' },
 ];
 

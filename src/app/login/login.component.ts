@@ -72,12 +72,12 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     console.info(this.logIn.value);
     // get user data
-    let url = "http://192.168.1.101:8000/auth/login/";
+    let url = "http://192.168.1.101:8000/auth/login";
     let data = {
       "email": this.userEmail.value,
 	    "password": this.password.value
     };
-    debugger
+
     this.http.post(url, data)
     .pipe(
       catchError(err => {
@@ -88,7 +88,6 @@ export class LoginComponent implements OnInit {
         })
     )
     .subscribe((response: any)=>{
-      debugger
       this.responseData = response;
       if(this.responseData.status == "SUCCESS"){
         console.info(this.responseData);

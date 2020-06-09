@@ -102,7 +102,7 @@ export class EditProfileComponent implements OnInit {
 
   loadProfile(){
     // get user data
-    let url = "http://192.168.1.101:8000/auth/profile/";
+    let url = "http://192.168.1.101:8000/auth/profile";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -133,7 +133,7 @@ export class EditProfileComponent implements OnInit {
 
 
   onSubmit(){
-    let url = "http://192.168.1.101:8000/auth/edit-profile/";
+    let url = "http://192.168.1.101:8000/auth/edit-profile";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
