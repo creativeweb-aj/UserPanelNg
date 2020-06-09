@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full'},
   { path: 'profile', component: MyProfileComponent, pathMatch: 'full', canActivate:[AuthenticationGuard]},
   { path: 'profile/editprofile', component: EditProfileComponent, pathMatch: 'full', canActivate:[AuthenticationGuard]},
-  { path: 'post', component: PostsComponent, pathMatch: 'full', canActivate:[AuthenticationGuard]},
+  { path: 'posts', component: PostsComponent, pathMatch: 'full', canActivate:[AuthenticationGuard]},
   { path: 'post/:id', component: PostDetailsComponent, pathMatch: 'full', canActivate:[AuthenticationGuard]},
   { path: '**', component: NotfoundComponent, pathMatch: 'full' },
 ];

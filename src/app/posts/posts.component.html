@@ -1,5 +1,20 @@
-<p>posts works!</p>
-<ul *ngFor="let post of PostsData">
-    <li>{{post.title}}</li>
-    <li>{{post.content}}</li>
-</ul>
+<div *ngFor="let post of PostsData">
+<mat-card class="posts-card">
+    <mat-card-header>
+      <div mat-card-avatar class="posts-header-image"></div>
+      <mat-card-title routerLink="/post/{{post.id}}">{{post.title}}</mat-card-title>
+      <mat-card-subtitle>{{ convertInt(post.created_on) | date}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="http://192.168.1.101:8000{{post.post_image}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        {{post.content}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+  

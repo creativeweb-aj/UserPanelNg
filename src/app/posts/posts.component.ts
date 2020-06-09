@@ -13,15 +13,18 @@ export class PostsComponent implements OnInit {
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    console.log(this.postService.getPosts);
     this.loadPosts();
   }
 
   loadPosts(){
-    this.postService.getPosts().subscribe(res => {
+    this.postService.getAllPosts().subscribe(res => {
       console.info(res);
       this.PostsData = res;
     })
+  }
+
+  convertInt(timestamp){
+    return parseInt(timestamp) * 1000;
   }
 
 }
