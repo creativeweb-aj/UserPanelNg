@@ -6,8 +6,6 @@ import {CustomValidationService} from './validator'
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { AuthServicesService } from '../auth-services.service';
-
 
 
 @Component({
@@ -19,7 +17,7 @@ export class SignupComponent implements OnInit {
   hide = true;
 
 
-  responseData = {
+  public responseData = {
     status: '',
     keyId: '',
     response: {
@@ -86,12 +84,12 @@ export class SignupComponent implements OnInit {
   maxDate: Date;
 
   constructor(
-    private Authguardservice: AuthServicesService,
     private signUpForm: FormBuilder,
     private customValidator: CustomValidationService,
     private _snackBar: MatSnackBar,
     private http: HttpClient,
     private router: Router) {
+
       // setting max date in date picker max current year
       const currentYear = new Date().getFullYear();
       this.maxDate = new Date(currentYear + 0, 11, 31);
@@ -144,8 +142,6 @@ export class SignupComponent implements OnInit {
 
       }
     })
-
-    
   }
 
 
