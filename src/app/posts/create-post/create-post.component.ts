@@ -105,7 +105,7 @@ export class CreatePostComponent implements OnInit {
         this._snackBar.open(this.responseData.message, 'Ok', {
           duration: 3000,
         }).afterDismissed().subscribe(() => {
-            this.router.navigate(['/post']);
+            this.router.navigate(['/']);
         });
       }else{
         this._snackBar.open(this.responseData.message, 'Ok', {

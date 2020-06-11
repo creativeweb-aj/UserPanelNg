@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PostService} from './post.service';
 import {Posts} from './posts';
 import { AuthServicesService } from '../auth-services.service';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-posts',

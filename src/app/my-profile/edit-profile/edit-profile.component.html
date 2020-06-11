@@ -21,7 +21,7 @@
       </div>
       <div class="profileImg">
         <img [src]="imgUrl" class="showPic" alt="profile picture">
-        <label for="proPic" class="profilePic"><img src="/assets/images/upload.png" alt="upload"></label>
+        <label for="proPic" class="profilePic"><img src="assets/images/upload.png" alt="upload"></label>
         <input id="proPic" formControlName="profilePicField" type="file" (change)="uploadFile($event)" accept="image/*">
         <!-- <image-cropper
             [imageChangedEvent]="imageChangedEvent"

@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import {Posts} from './posts';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+    ) { }
 
   getAllPosts(){
     let Url: string = 'http://192.168.1.101:8000/secure/posts';
@@ -17,7 +21,12 @@ export class PostService {
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
     );
-    return this.http.get<Posts[]>(Url, {headers: header});
+    return this.http.get<Posts[]>(Url, {headers: header}).pipe(
+      catchError(err => {
+          this.router.navigate(['/login']);
+          return throwError(err);
+        })
+    )
   }
 
   getPostDetail(postId){
@@ -29,7 +38,12 @@ export class PostService {
     let data = {
       "postId": parseInt(postId)
     }
-    return this.http.post(Url, data, {headers: header});
+    return this.http.post(Url, data, {headers: header}).pipe(
+      catchError(err => {
+          this.router.navigate(['/login']);
+          return throwError(err);
+        })
+    )
   }
 
   createPost(data){
