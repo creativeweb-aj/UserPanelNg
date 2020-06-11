@@ -1,0 +1,51 @@
+.posts-card {
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.posts-header-image {
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover; */
+}
+
+.posts-header-image img{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.create-flex-container {
+    display: flex;
+    justify-content: space-between;
+    width: 480px;
+}
+.create-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+}
+.create-button-container button{
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+}
+
+.posts-card mat-card-title {
+    cursor: pointer;
+    outline: none;
+}
+
+.posts-card .post-image {
+    cursor: pointer;
+    outline: none;
+}
+
+.postedby {
+    margin: 7px 0px;
+    font-size: 14px;
+    font-weight: 500;
+}
+ 
+.datetime {
+    font-size: 12px;
+}

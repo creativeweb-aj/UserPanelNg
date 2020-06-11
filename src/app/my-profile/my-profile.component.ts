@@ -22,7 +22,9 @@ export class MyProfileComponent implements OnInit {
       contact: '',
       profession: '',
       biography: '',
-      profile_picture: ''
+      profile_picture: '',
+      follower: '',
+      following: ''
     },
     message: ''
   };
@@ -42,7 +44,7 @@ export class MyProfileComponent implements OnInit {
 
   loadProfile(){
     // get user data
-    let url = "http://192.168.1.101:8000/auth/profile/";
+    let url = "http://192.168.1.101:8000/auth/profile";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -58,7 +60,6 @@ export class MyProfileComponent implements OnInit {
         })
     )
     .subscribe((response: any)=>{
-      debugger
       this.responseData = response;
       if(this.responseData.status == "SUCCESS"){
         console.info(this.responseData);

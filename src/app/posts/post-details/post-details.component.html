@@ -1,0 +1,20 @@
+<mat-card class="post-detail-card">
+    <mat-card-header>
+        <div mat-card-avatar class="posts-header-image">
+            <img src="http://192.168.1.101:8000{{result.response.created_by.profile_picture}}" alt="user profile">
+        </div>
+        <mat-card-title >{{result.response.title}}</mat-card-title>
+        <mat-card-subtitle class="postedby">Posted By {{result.response.created_by.first_name}} {{result.response.created_by.last_name}}</mat-card-subtitle>
+        <mat-card-subtitle class="datetime">{{ convertInt(result.response.created_on) | date:'medium'}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="http://192.168.1.101:8000{{result.response.post_image}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <p>
+        {{result.response.content}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+    </mat-card-actions>
+</mat-card>
