@@ -32,4 +32,13 @@ export class PostService {
     return this.http.post(Url, data, {headers: header});
   }
 
+  createPost(data){
+    let Url: string = 'http://192.168.1.101:8000/secure/create-post'
+    let token = localStorage.getItem("UserToken");
+    let header = new HttpHeaders(
+      {'Authorization': 'token '+ token}
+    );
+    return this.http.post(Url, data, {headers: header});
+  }
+
 }

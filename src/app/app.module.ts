@@ -13,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './signup/signup.component';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { EmailverificationComponent } from './signup/emailverification/emailverification.component';
 import { NotfoundComponent } from './notfound/notfound.component';
@@ -21,6 +20,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { EditProfileComponent } from './my-profile/edit-profile/edit-profile.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostDetailsComponent } from './posts/post-details/post-details.component';
+import { CreatePostComponent } from './posts/create-post/create-post.component';
 
 // post services
 
@@ -29,14 +29,14 @@ import { PostDetailsComponent } from './posts/post-details/post-details.componen
   declarations: [
     AppComponent,
     SignupComponent,
-    HomeComponent,
     LoginComponent,
     EmailverificationComponent,
     NotfoundComponent,
     MyProfileComponent,
     EditProfileComponent,
     PostsComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +49,6 @@ import { PostDetailsComponent } from './posts/post-details/post-details.componen
   ],
   providers: [
     AuthServicesService,
-
   ],
   bootstrap: [AppComponent]
 })

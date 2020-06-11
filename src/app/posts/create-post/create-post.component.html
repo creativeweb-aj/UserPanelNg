@@ -1,0 +1,38 @@
+<div class="create-post-form-center">
+    <form class="create-post-form" [formGroup]="createPost" (ngSubmit)="onSubmit()">
+      <h1 class="form-title">Create Post</h1>
+      <mat-form-field class="create-post-full-width" appearance="outline">
+        <mat-label>Post Title</mat-label>
+        <input matInput formControlName="titleField" placeholder="Post Title" value="">
+        <mat-icon matSuffix aria-hidden="false" aria-label="title icon">title</mat-icon>
+        <mat-error *ngIf="(title.errors?.required)">
+          Title <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <div class="postImg">
+        <img [src]="imgUrl" class="showPic" alt="post picture">
+        <label for="proPic" class="postPic"><img src="/assets/images/upload.png" alt="upload"></label>
+        <input id="proPic" formControlName="postImageField" type="file" (change)="uploadFile($event)" accept="image/*">
+      </div>
+      <mat-form-field class="create-post-full-width" appearance="outline">
+        <mat-label>Post Content</mat-label>
+        <textarea matInput formControlName="contentField" placeholder="Post Content"></textarea>
+        <mat-icon matSuffix aria-hidden="false" aria-label="Content icon">description</mat-icon>
+        <mat-error *ngIf="(content.errors?.required)">
+          Post Content <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="create-post-full-width" appearance="outline">
+        <mat-label>Hash Tags</mat-label>
+        <input matInput placeholder="Hash Tags" formControlName="hashTagField">
+        <mat-icon matSuffix aria-hidden="false" aria-label="loyalty icon">loyalty</mat-icon>
+        <mat-error *ngIf="(hashTag.errors?.required)">
+          Hash Tags <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <div class="create-post-full-width">
+        <button type="submit" mat-stroked-button color="primary" [disabled]="!createPost.valid">Create</button>
+      </div>
+    </form>
+</div>
+

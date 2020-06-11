@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from './post.service';
 import {Posts} from './posts';
+import { AuthServicesService } from '../auth-services.service';
 
 @Component({
   selector: 'app-posts',
@@ -9,8 +10,9 @@ import {Posts} from './posts';
 })
 export class PostsComponent implements OnInit {
   PostsData: Posts[];
+  userPicture: string;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService, public Authguardservice: AuthServicesService) { }
 
   ngOnInit(): void {
     this.loadPosts();

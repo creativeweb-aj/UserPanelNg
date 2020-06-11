@@ -1,0 +1,48 @@
+.create-post-form-center {
+    display: flex;
+    justify-content: center;
+}
+.create-post-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.form-title {
+    text-align: center;
+}
+
+.create-post-full-width {
+    width: 100%;
+}
+
+.nameField {
+    width: 48%;
+}
+
+.create-post-full-width .mat-form-field + .mat-form-field {
+    margin-left: 4%;
+}
+.create-post-full-width textarea{
+    height: 60px;
+}
+#proPic {
+    visibility: hidden;
+}
+.postPic {
+    padding-left: 40px;
+}
+
+.postImg {
+    margin: 20px;
+}
+
+.showPic {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+mage-cropper {
+    display: none;
+}

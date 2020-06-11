@@ -17,7 +17,11 @@ export class PostDetailsComponent implements OnInit {
         post_image: '',
         hash_tag: '',
         created_on: '',
-        created_by: ''
+        created_by: {
+          profile_picture: '',
+          first_name: '',
+          last_name: ''
+        }
     },
     message: ''
   };
