@@ -49,3 +49,7 @@
 .datetime {
     font-size: 12px;
 }
+
+.liked {
+    background-color: red;
+}

@@ -23,9 +23,13 @@ export class PostService {
     );
     return this.http.get<Posts[]>(Url, {headers: header}).pipe(
       catchError(err => {
+        debugger
+        if(err.status == 401){
+          localStorage.removeItem('UserToken')
           this.router.navigate(['/login']);
-          return throwError(err);
-        })
+        } 
+        return throwError(err);
+      })
     )
   }
 
@@ -40,7 +44,10 @@ export class PostService {
     }
     return this.http.post(Url, data, {headers: header}).pipe(
       catchError(err => {
-          this.router.navigate(['/login']);
+          if(err.status == 401){
+            localStorage.removeItem('UserToken')
+            this.router.navigate(['/login']);
+          }
           return throwError(err);
         })
     )
@@ -48,6 +55,15 @@ export class PostService {
 
   createPost(data){
     let Url: string = 'http://192.168.1.101:8000/secure/create-post'
+    let token = localStorage.getItem("UserToken");
+    let header = new HttpHeaders(
+      {'Authorization': 'token '+ token}
+    );
+    return this.http.post(Url, data, {headers: header});
+  }
+
+  postLike(data){
+    let Url: string = 'http://192.168.1.101:8000/secure/like-dislike-post'
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}

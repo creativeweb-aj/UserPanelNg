@@ -14,7 +14,10 @@
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button>LIKE</button>
+        <span class="like-count" id="count-{{result.response.id}}">{{result.response.likes}}</span>
+        <button mat-icon-button color="primary" (click)="likePost(result.response.id)">
+            <mat-icon matSuffix aria-hidden="false" aria-label="favorite_border icon" id="like-{{result.response.id}}">favorite_border</mat-icon>
+        </button>
         <button mat-button>SHARE</button>
     </mat-card-actions>
 </mat-card>

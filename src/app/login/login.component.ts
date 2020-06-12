@@ -63,9 +63,9 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    // if (this.Authguardservice.getToken()) {   
-    //   this.router.navigateByUrl("/");  
-    // }
+    if (this.Authguardservice.getToken()) {   
+      this.router.navigateByUrl("/");  
+    }
     this.appnavbarlogo.profileImage = 'assets/images/dummyprofile.png';
   }
 

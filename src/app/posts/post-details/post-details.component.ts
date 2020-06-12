@@ -16,12 +16,22 @@ export class PostDetailsComponent implements OnInit {
         content: '',
         post_image: '',
         hash_tag: '',
+        likes: '',
         created_on: '',
         created_by: {
           profile_picture: '',
           first_name: '',
           last_name: ''
         }
+    },
+    message: ''
+  };
+
+  responseData = {
+    status: '',
+    response: {
+      like: '',
+      total: ''
     },
     message: ''
   };
@@ -43,6 +53,23 @@ export class PostDetailsComponent implements OnInit {
     this.route.params.subscribe((params: Params) => this.myParam = params['id']);
     this.postService.getPostDetail(this.myParam).subscribe((res: any) => {
       this.result = res;
+    })
+  }
+
+  likePost(postId){
+    let data = {
+      'postId': postId
+    }
+    this.postService.postLike(data).subscribe((res: any) => {
+      this.responseData = res;
+      console.info(this.responseData)
+      if(this.responseData.response.like){
+        document.getElementById('like-'+postId).textContent = 'favorite';
+        document.getElementById('count-'+postId).textContent = this.responseData.response.total;
+      }else{
+        document.getElementById('like-'+postId).textContent = 'favorite_border';
+        document.getElementById('count-'+postId).textContent = this.responseData.response.total;
+      }
     })
   }
   

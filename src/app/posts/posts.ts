@@ -4,6 +4,7 @@ export class Posts {
     content: string;
     post_image: string;
     hash_tag: string;
+    likes: string;
     created_on: string;
     created_by: {
         profile_picture: '',
