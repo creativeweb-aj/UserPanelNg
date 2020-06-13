@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthServicesService } from '../auth-services.service';
 import {AppComponent} from '../app.component';
+import { ProfileServiceService } from './profile-service.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -32,6 +33,7 @@ export class MyProfileComponent implements OnInit {
   imgUrl = 'assets/images/dummyprofile.png';
 
   constructor(
+    private profileService: ProfileServiceService,
     private appnavbarlogo: AppComponent,
     private Authguardservice: AuthServicesService,
     private http: HttpClient,
@@ -43,33 +45,17 @@ export class MyProfileComponent implements OnInit {
   }
 
   loadProfile(){
-    // get user data
-    let url = "http://192.168.1.101:8000/auth/profile";
-    let token = localStorage.getItem("UserToken");
-    let header = new HttpHeaders(
-      {'Authorization': 'token '+ token}
-    );
-    
-    this.http.get(url, {headers: header})
-    .pipe(
-      catchError(err => {
-          this._snackBar.open(err.error.detail, 'Ok', {
-            duration: 3000,
-          });
-          return throwError(err);
-        })
-    )
-    .subscribe((response: any)=>{
+    this.profileService.getCurrentProfile().subscribe((response: any)=>{
       this.responseData = response;
       if(this.responseData.status == "SUCCESS"){
         console.info(this.responseData);
         if(this.responseData.response.profile_picture != null){
-          this.imgUrl = 'http://192.168.1.101:8000'+this.responseData.response.profile_picture;
+          this.imgUrl = this.responseData.response.profile_picture;
         }else{
           this.imgUrl = 'assets/images/dummyprofile.png';
         }
         if(this.responseData.response.profile_picture != null){
-          this.appnavbarlogo.profileImage = 'http://192.168.1.101:8000'+this.responseData.response.profile_picture;
+          this.appnavbarlogo.profileImage = this.responseData.response.profile_picture;
         }else{
           this.appnavbarlogo.profileImage = 'assets/images/dummyprofile.png';
         }

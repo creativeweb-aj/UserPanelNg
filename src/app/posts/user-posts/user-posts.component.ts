@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {PostService} from './post.service';
-import {Posts} from './posts';
-import { AuthServicesService } from '../auth-services.service';
-import { catchError } from 'rxjs/operators';
-import { AppComponent } from '../app.component';
+import { PostService } from '../post.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Posts } from '../posts';
+import { AuthServicesService } from 'src/app/auth-services.service';
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  selector: 'app-user-posts',
+  templateUrl: './user-posts.component.html',
+  styleUrls: ['./user-posts.component.css']
 })
-export class PostsComponent implements OnInit {
+export class UserPostsComponent implements OnInit {
   PostsData: Posts[];
   userPicture: string;
-  liked: string = 'favorite';
 
   responseData = {
     status: '',
@@ -27,38 +24,23 @@ export class PostsComponent implements OnInit {
     message: ''
   };
 
-
   constructor(
-    private appnavbarlogo: AppComponent,
-    private postService: PostService, 
+    private postService: PostService,
     private _snackBar: MatSnackBar,
     private router: Router,
     public Authguardservice: AuthServicesService) { }
 
   ngOnInit(): void {
-    this.loadProfile();
-    this.loadPosts();
+    this.loadUserPosts();
   }
 
-  loadPosts(){
-    this.postService.getAllPosts().subscribe((res: any) => {
+  loadUserPosts(){
+    this.postService.getMyPosts().subscribe((res: any) => {
       console.info(res);
       this.PostsData = res;
     })
   }
 
-  loadProfile(){
-    this.postService.getCurrentProfile().subscribe((response: any)=>{
-        this.responseData = response;
-        if(this.responseData.status == "SUCCESS"){
-          if(this.responseData.response.profile_picture != null){
-            this.appnavbarlogo.profileImage = this.responseData.response.profile_picture;
-          }else{
-            this.appnavbarlogo.profileImage = 'assets/images/dummyprofile.png';
-          }
-        }
-    });
-  }
 
   convertInt(timestamp){
     return parseInt(timestamp) * 1000;
@@ -80,5 +62,22 @@ export class PostsComponent implements OnInit {
       }
     });
   }
+
+  deletePost(postId){
+    let data = {
+      'postId': postId
+    }
+    this.postService.postDelete(data).subscribe((res: any) => {
+      this.responseData = res;
+      if(this.responseData.status == 'SUCCESS'){
+        this._snackBar.open(this.responseData.message, 'Ok', {
+          duration: 3000,
+        }).afterDismissed().subscribe(() => {
+            this.router.navigate(['/user-post']);
+        });
+      }
+    });
+  }
+
 
 }

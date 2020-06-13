@@ -1,0 +1,67 @@
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.follow {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-evenly;
+    flex-grow: initial;
+}
+
+.follow span {
+    color: #673ab7;
+}
+
+.upper-container{
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+	height: 150px;
+	background: #673ab7;
+}
+.image-container{
+	background: white;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	padding: 5px;
+	transform: translate(115px,50px);
+}
+.image-container img{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	object-fit: fill;
+}	
+.lower-container{
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+	height: 280px;
+	background: #FFF;
+	padding: 20px;
+	padding-top: 80px;
+	text-align: center;
+}
+.lower-container h3, h4{
+	box-sizing: border-box;
+	line-height: .6;
+	font-weight: lighter;
+}
+.lower-container h4{
+	color: #673ab7;
+	opacity: .6;
+	font-weight: bold;
+}
+.lower-container p{
+	font-size: 16px;
+	color: gray;
+    margin-bottom: 30px;
+    text-align: justify;
+    justify-content: space-evenly;
+}

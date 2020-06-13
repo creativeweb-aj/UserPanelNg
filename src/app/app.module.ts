@@ -21,6 +21,8 @@ import { EditProfileComponent } from './my-profile/edit-profile/edit-profile.com
 import { PostsComponent } from './posts/posts.component';
 import { PostDetailsComponent } from './posts/post-details/post-details.component';
 import { CreatePostComponent } from './posts/create-post/create-post.component';
+import { UserPostsComponent } from './posts/user-posts/user-posts.component';
+import { UserProfileComponent } from './my-profile/user-profile/user-profile.component';
 
 // post services
 
@@ -36,7 +38,9 @@ import { CreatePostComponent } from './posts/create-post/create-post.component';
     EditProfileComponent,
     PostsComponent,
     PostDetailsComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    UserPostsComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

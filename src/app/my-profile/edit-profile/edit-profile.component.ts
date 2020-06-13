@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { ProfileServiceService } from '../profile-service.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -74,6 +75,7 @@ export class EditProfileComponent implements OnInit {
 
   
   constructor(
+    private profileService: ProfileServiceService,
     private profileForm: FormBuilder,
     private _snackBar: MatSnackBar,
     private http: HttpClient,
@@ -101,23 +103,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   loadProfile(){
-    // get user data
-    let url = "http://192.168.1.101:8000/auth/profile";
-    let token = localStorage.getItem("UserToken");
-    let header = new HttpHeaders(
-      {'Authorization': 'token '+ token}
-    );
-    
-    this.http.get(url, {headers: header})
-    .pipe(
-      catchError(err => {
-          this._snackBar.open(err.error.detail, 'Ok', {
-            duration: 3000,
-          });
-          return throwError(err);
-        })
-    )
-    .subscribe((response: any)=>{
+    this.profileService.getCurrentProfile().subscribe((response: any)=>{
       this.responseData = response;
       if(this.responseData.status == "SUCCESS"){
         console.info(this.responseData);
@@ -133,12 +119,6 @@ export class EditProfileComponent implements OnInit {
 
 
   onSubmit(){
-    let url = "http://192.168.1.101:8000/auth/edit-profile";
-    let token = localStorage.getItem("UserToken");
-    let header = new HttpHeaders(
-      {'Authorization': 'token '+ token}
-    );
-    
     var formdata = new FormData();
     formdata.append('firstName', this.firstName.value)
     formdata.append('lastName', this.lastName.value)
@@ -153,32 +133,19 @@ export class EditProfileComponent implements OnInit {
     formdata.append('contact', this.contactInfo.value)
     console.info(this.profileImage)
 
-    this.http.post(url, formdata, {headers: header})
-    .pipe(
-      catchError(err => {
-          this._snackBar.open(err.error.detail, 'Ok', {
-            duration: 3000,
-          });
-          return throwError(err);
-        })
-    )
-    .subscribe((response: any)=>{
+    this.profileService.updateUserProfile(formdata).subscribe((response: any)=>{
       this.responseData = response;
       console.info(this.responseData)
       if(this.responseData.status == "SUCCESS"){
-
         this._snackBar.open(this.responseData.message, 'Ok', {
           duration: 3000,
         }).afterDismissed().subscribe(() => {
             this.router.navigate(['/profile']);
         });
-
       }else{
-
         this._snackBar.open(this.responseData.message, 'Ok', {
           duration: 3000,
         });
-
       }
     })
   }

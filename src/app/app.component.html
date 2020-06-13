@@ -28,6 +28,10 @@
                     <mat-icon aria-hidden="false" aria-label="user profile icon">account_circle</mat-icon>
                     My Profile
                 </button>
+                <button mat-menu-item routerLink="/user-post" *ngIf="Authguardservice.getToken()">
+                    <mat-icon aria-hidden="false" aria-label="user posts icon">post_add</mat-icon>
+                    My Posts
+                </button>
                 <button mat-menu-item routerLink="/login" *ngIf="!Authguardservice.getToken()">
                     <mat-icon aria-hidden="false" aria-label="login icon">login</mat-icon>
                     Log in

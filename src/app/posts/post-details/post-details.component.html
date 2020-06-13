@@ -1,13 +1,17 @@
 <mat-card class="post-detail-card">
     <mat-card-header>
         <div mat-card-avatar class="posts-header-image">
-            <img src="http://192.168.1.101:8000{{result.response.created_by.profile_picture}}" alt="user profile">
+            <img src="{{result.response.created_by.profile_picture}}" alt="user profile">
         </div>
         <mat-card-title >{{result.response.title}}</mat-card-title>
-        <mat-card-subtitle class="postedby">Posted By {{result.response.created_by.first_name}} {{result.response.created_by.last_name}}</mat-card-subtitle>
+        <mat-card-subtitle class="postedby">Posted By 
+            <a routerLink="/user-profile/{{result.response.created_by.id}}" color="primary">
+                {{result.response.created_by.first_name}} {{result.response.created_by.last_name}}
+            </a>
+        </mat-card-subtitle>
         <mat-card-subtitle class="datetime">{{ convertInt(result.response.created_on) | date:'medium'}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="http://192.168.1.101:8000{{result.response.post_image}}" alt="Photo of a Shiba Inu">
+    <img mat-card-image src="{{result.response.post_image}}" alt="Photo of a Shiba Inu">
     <mat-card-content>
         <p>
         {{result.response.content}}
@@ -16,7 +20,12 @@
     <mat-card-actions>
         <span class="like-count" id="count-{{result.response.id}}">{{result.response.likes}}</span>
         <button mat-icon-button color="primary" (click)="likePost(result.response.id)">
-            <mat-icon matSuffix aria-hidden="false" aria-label="favorite_border icon" id="like-{{result.response.id}}">favorite_border</mat-icon>
+            <mat-icon matSuffix aria-hidden="false" *ngIf="result.response.isLiked" aria-label="favorite_border icon" id="like-{{result.response.id}}">
+                favorite
+              </mat-icon>
+            <mat-icon matSuffix aria-hidden="false" *ngIf="!result.response.isLiked" aria-label="favorite_border icon" id="like-{{result.response.id}}">
+                favorite_border
+            </mat-icon>
         </button>
         <button mat-button>SHARE</button>
     </mat-card-actions>
