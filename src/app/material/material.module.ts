@@ -19,7 +19,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [],
@@ -41,8 +40,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     MatAutocompleteModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatSnackBarModule,
-    ImageCropperModule,
+    MatSnackBarModule
   ],
   exports:[
     CommonModule,
@@ -62,8 +60,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     MatAutocompleteModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatSnackBarModule,
-    ImageCropperModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }

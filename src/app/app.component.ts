@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
 
   profileImage = 'assets/images/dummyprofile.png';
+  userName: string = 'User Name';
   
   constructor(public Authguardservice: AuthServicesService, private router: Router) {} 
 

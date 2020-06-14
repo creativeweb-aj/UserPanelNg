@@ -32,7 +32,7 @@
     </mat-card-content>
     <mat-card-actions>
       <span class="like-count" id="count-{{post.id}}">{{post.likes}}</span>
-      <button mat-icon-button color="primary" (click)="likePost(post.id)">
+      <button mat-icon-button color="warn" (click)="likePost(post.id)">
         <mat-icon matSuffix aria-hidden="false" *ngIf="post.isLiked" aria-label="favorite_border icon" id="like-{{post.id}}">
           favorite
         </mat-icon>

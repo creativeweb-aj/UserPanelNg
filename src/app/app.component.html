@@ -24,6 +24,10 @@
                 <img class="profile-pic" [src]="profileImage">
             </button>
             <mat-menu #profile="matMenu">
+                <button mat-button disabled>
+                    <mat-icon aria-hidden="false" aria-label="person icon">person</mat-icon>
+                    {{userName}}
+                </button>
                 <button mat-menu-item routerLink="/profile">
                     <mat-icon aria-hidden="false" aria-label="user profile icon">account_circle</mat-icon>
                     My Profile

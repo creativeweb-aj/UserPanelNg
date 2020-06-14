@@ -19,7 +19,7 @@
     </mat-card-content>
     <mat-card-actions>
         <span class="like-count" id="count-{{result.response.id}}">{{result.response.likes}}</span>
-        <button mat-icon-button color="primary" (click)="likePost(result.response.id)">
+        <button mat-icon-button color="warn" (click)="likePost(result.response.id)">
             <mat-icon matSuffix aria-hidden="false" *ngIf="result.response.isLiked" aria-label="favorite_border icon" id="like-{{result.response.id}}">
                 favorite
               </mat-icon>

@@ -22,7 +22,9 @@ export class PostsComponent implements OnInit {
     response: {
       like: '',
       total: '',
-      profile_picture: ''
+      profile_picture: '',
+      first_name: '',
+      last_name: ''
     },
     message: ''
   };
@@ -53,6 +55,7 @@ export class PostsComponent implements OnInit {
         if(this.responseData.status == "SUCCESS"){
           if(this.responseData.response.profile_picture != null){
             this.appnavbarlogo.profileImage = this.responseData.response.profile_picture;
+            this.appnavbarlogo.userName = this.responseData.response.first_name+' '+this.responseData.response.last_name;
           }else{
             this.appnavbarlogo.profileImage = 'assets/images/dummyprofile.png';
           }

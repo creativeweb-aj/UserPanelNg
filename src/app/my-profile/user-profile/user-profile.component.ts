@@ -55,7 +55,7 @@ export class UserProfileComponent implements OnInit {
           this.router.navigate(['/profile']);
         }else{
           if(this.responseData.response.profile_picture != null){
-            this.imgUrl = 'http://192.168.1.101:8000'+this.responseData.response.profile_picture;
+            this.imgUrl = this.responseData.response.profile_picture;
           }else{
             this.imgUrl = 'assets/images/dummyprofile.png';
           }

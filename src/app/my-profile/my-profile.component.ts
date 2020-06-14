@@ -51,12 +51,10 @@ export class MyProfileComponent implements OnInit {
         console.info(this.responseData);
         if(this.responseData.response.profile_picture != null){
           this.imgUrl = this.responseData.response.profile_picture;
+          this.appnavbarlogo.profileImage = this.responseData.response.profile_picture;
+          this.appnavbarlogo.userName = this.responseData.response.first_name+' '+this.responseData.response.last_name;
         }else{
           this.imgUrl = 'assets/images/dummyprofile.png';
-        }
-        if(this.responseData.response.profile_picture != null){
-          this.appnavbarlogo.profileImage = this.responseData.response.profile_picture;
-        }else{
           this.appnavbarlogo.profileImage = 'assets/images/dummyprofile.png';
         }
       }

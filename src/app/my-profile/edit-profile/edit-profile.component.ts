@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { ProfileServiceService } from '../profile-service.service';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {ImageCropDialogComponent} from '../../image-crop-dialog/image-crop-dialog.component';
+
 
 @Component({
   selector: 'app-edit-profile',
@@ -79,13 +82,15 @@ export class EditProfileComponent implements OnInit {
     private profileForm: FormBuilder,
     private _snackBar: MatSnackBar,
     private http: HttpClient,
-    private router: Router) { }
+    private router: Router,
+    private dialog: MatDialog
+    ) { }
 
   ngOnInit(): void {
     this.loadProfile();
   }
 
-  imgUrl = 'assets/images/profilepic.png';
+  imgUrl: any = 'assets/images/profilepic.png';
   profileImage = '';
 
   imageChangedEvent: boolean = false ;
@@ -98,9 +103,24 @@ export class EditProfileComponent implements OnInit {
       reader.onload=(event:any)=>{
         this.imgUrl = event.target.result;
         this.imageChangedEvent = true;
+        //this.openDialog()
       }
     }
   }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      image: this.imgUrl
+    };
+    const _dialog = this.dialog.open(ImageCropDialogComponent, dialogConfig);
+    _dialog.afterClosed().subscribe(
+      (data: any) => console.log("Dialog output:", data)
+    );
+  }
+
 
   loadProfile(){
     this.profileService.getCurrentProfile().subscribe((response: any)=>{
@@ -109,7 +129,9 @@ export class EditProfileComponent implements OnInit {
         console.info(this.responseData);
         this.firstName.setValue(this.responseData.response.first_name);
         this.lastName.setValue(this.responseData.response.last_name);
-        this.imgUrl = 'http://192.168.1.101:8000'+this.responseData.response.profile_picture;
+        if(this.responseData.response.profile_picture != null){
+          this.imgUrl = this.responseData.response.profile_picture;
+        }
         this.category.setValue(this.responseData.response.profession);
         this.bio.setValue(this.responseData.response.biography);
         this.contactInfo.setValue(this.responseData.response.contact);
@@ -131,7 +153,6 @@ export class EditProfileComponent implements OnInit {
     formdata.append('profession', this.category.value)
     formdata.append('bio', this.bio.value)
     formdata.append('contact', this.contactInfo.value)
-    console.info(this.profileImage)
 
     this.profileService.updateUserProfile(formdata).subscribe((response: any)=>{
       this.responseData = response;

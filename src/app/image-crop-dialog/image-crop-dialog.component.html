@@ -1,0 +1,32 @@
+<!-- <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 3"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+<img [src]="croppedImage" /> -->
+
+
+
+<h1 mat-dialog-title>Crop Image</h1>
+<div mat-dialog-content>
+  <p>Crop here</p>
+    <mat-label>Profile Image</mat-label>
+    <!-- <div class="profileImg">
+        <label for="proPic" class="profilePic"><img src="assets/images/upload.png" alt="upload"></label>
+        <input id="proPic" type="file" (click)="uploadFile($event)" accept="image/*">
+    </div> -->
+    <angular-cropper #angularCropper [cropperOptions]="config" [imageUrl]="imageUrl"
+     (export)="resultImageFun($event)"
+     (ready)="checkstatus($event)">
+
+    </angular-cropper>
+    <img [src]="imgUrl" alt="img url">
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="CropMe()" cdkFocusInitial>Crop</button>
+</div>
