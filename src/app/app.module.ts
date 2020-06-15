@@ -23,9 +23,6 @@ import { PostDetailsComponent } from './posts/post-details/post-details.componen
 import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { UserPostsComponent } from './posts/user-posts/user-posts.component';
 import { UserProfileComponent } from './my-profile/user-profile/user-profile.component';
-import { ImageCropDialogComponent } from './image-crop-dialog/image-crop-dialog.component';
-
-import { AngularCropperjsModule } from 'angular-cropperjs';
 
 // post services
 
@@ -43,8 +40,7 @@ import { AngularCropperjsModule } from 'angular-cropperjs';
     PostDetailsComponent,
     CreatePostComponent,
     UserPostsComponent,
-    UserProfileComponent,
-    ImageCropDialogComponent
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -53,13 +49,11 @@ import { AngularCropperjsModule } from 'angular-cropperjs';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule,
-    AngularCropperjsModule
+    MaterialModule
   ],
   providers: [
     AuthServicesService,
   ],
-  entryComponents: [ImageCropDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

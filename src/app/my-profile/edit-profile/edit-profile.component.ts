@@ -7,7 +7,6 @@ import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { ProfileServiceService } from '../profile-service.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {ImageCropDialogComponent} from '../../image-crop-dialog/image-crop-dialog.component';
 
 
 @Component({
@@ -108,18 +107,18 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-      image: this.imgUrl
-    };
-    const _dialog = this.dialog.open(ImageCropDialogComponent, dialogConfig);
-    _dialog.afterClosed().subscribe(
-      (data: any) => console.log("Dialog output:", data)
-    );
-  }
+  // openDialog() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = false;
+  //   dialogConfig.autoFocus = true;
+  //   dialogConfig.data = {
+  //     image: this.imgUrl
+  //   };
+  //   const _dialog = this.dialog.open(ImageCropDialogComponent, dialogConfig);
+  //   _dialog.afterClosed().subscribe(
+  //     (data: any) => console.log("Dialog output:", data)
+  //   );
+  // }
 
 
   loadProfile(){
