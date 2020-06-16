@@ -65,3 +65,7 @@
     text-align: justify;
     justify-content: space-evenly;
 }
+
+a {
+	outline: none;
+}
