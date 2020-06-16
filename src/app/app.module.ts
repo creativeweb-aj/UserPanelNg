@@ -21,8 +21,11 @@ import { EditProfileComponent } from './my-profile/edit-profile/edit-profile.com
 import { PostsComponent } from './posts/posts.component';
 import { PostDetailsComponent } from './posts/post-details/post-details.component';
 import { CreatePostComponent } from './posts/create-post/create-post.component';
+import { UserPostsComponent } from './posts/user-posts/user-posts.component';
+import { UserProfileComponent } from './my-profile/user-profile/user-profile.component';
 
-// post services
+// quill editor
+import {QuillModule} from 'ngx-quill';
 
 
 @NgModule({
@@ -36,7 +39,9 @@ import { CreatePostComponent } from './posts/create-post/create-post.component';
     EditProfileComponent,
     PostsComponent,
     PostDetailsComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    UserPostsComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import { CreatePostComponent } from './posts/create-post/create-post.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    QuillModule.forRoot()
   ],
   providers: [
     AuthServicesService,

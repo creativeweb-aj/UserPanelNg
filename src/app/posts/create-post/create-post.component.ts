@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { PostService } from '../post.service';
+import {EditorChangeContent, EditorChangeSelection} from 'ngx-quill';
 
 
 @Component({
@@ -66,6 +67,10 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  changeEditor(e: EditorChangeContent | EditorChangeSelection){
+    console.info(e);
+  }
+
   imgUrl = 'assets/images/profilepic.png';
   postFile: any;
 
@@ -105,7 +110,7 @@ export class CreatePostComponent implements OnInit {
         this._snackBar.open(this.responseData.message, 'Ok', {
           duration: 3000,
         }).afterDismissed().subscribe(() => {
-            this.router.navigate(['/post']);
+            this.router.navigate(['/']);
         });
       }else{
         this._snackBar.open(this.responseData.message, 'Ok', {

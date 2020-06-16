@@ -3,10 +3,6 @@
     margin-bottom: 20px;
 }
 
-.posts-card mat-card-header a{
-    text-decoration: none;
-}
-
 .posts-header-image img{
     border-radius: 50%;
     width: 40px;

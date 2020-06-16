@@ -61,5 +61,14 @@ mat-sidenav-content .mat-toolbar.mat-primary .logo {
   flex: 1 1 auto;
 }
 
+.user-info{
+  display: flex;
+  padding: 10px;
+}
+
+.user-info h3 {
+  margin: auto 10px;
+}
+
 
 /*# sourceMappingURL=app.component.css.map */

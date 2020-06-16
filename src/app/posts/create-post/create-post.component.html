@@ -22,6 +22,7 @@
           Post Content <strong>required</strong>
         </mat-error>
       </mat-form-field>
+      <quill-editor [styles]="{height: '200px'}" (onEditorChanged)="changeEditor($event)"></quill-editor>
       <mat-form-field class="create-post-full-width" appearance="outline">
         <mat-label>Hash Tags</mat-label>
         <input matInput placeholder="Hash Tags" formControlName="hashTagField">
