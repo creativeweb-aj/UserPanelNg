@@ -24,7 +24,7 @@
                 <img class="profile-pic" [src]="profileImage">
             </button>
             <mat-menu #profile="matMenu">
-                <span class="user-info">
+                <span class="user-info" *ngIf="Authguardservice.getToken()">
                     <!-- <mat-icon aria-hidden="false" aria-label="person icon">person</mat-icon> -->
                     <img class="profile-pic" [src]="profileImage">
                     <h3>{{userName | titlecase }}</h3>
