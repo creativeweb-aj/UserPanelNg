@@ -3,10 +3,10 @@
     margin-bottom: 20px;
 }
 
-.post-detail-header-image {
-    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover; */
+.postedby a{
+    text-decoration: none;
 }
+
 
 .posts-header-image img{
     border-radius: 50%;

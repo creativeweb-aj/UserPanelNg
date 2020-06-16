@@ -74,6 +74,7 @@ export class UserPostsComponent implements OnInit {
           duration: 3000,
         }).afterDismissed().subscribe(() => {
             this.router.navigate(['/user-post']);
+            this.loadUserPosts();
         });
       }
     });
