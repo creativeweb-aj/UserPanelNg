@@ -70,5 +70,7 @@ mat-sidenav-content .mat-toolbar.mat-primary .logo {
   margin: auto 10px;
 }
 
-
+button {
+  outline: none;
+}
 /*# sourceMappingURL=app.component.css.map */
