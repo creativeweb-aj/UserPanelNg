@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { PostService } from '../post.service';
+import {EditorChangeContent, EditorChangeSelection} from 'ngx-quill';
 
 
 @Component({
@@ -64,6 +65,10 @@ export class CreatePostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  changeEditor(e: EditorChangeContent | EditorChangeSelection){
+    console.info(e);
   }
 
   imgUrl = 'assets/images/profilepic.png';

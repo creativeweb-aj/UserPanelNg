@@ -24,7 +24,8 @@ import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { UserPostsComponent } from './posts/user-posts/user-posts.component';
 import { UserProfileComponent } from './my-profile/user-profile/user-profile.component';
 
-// post services
+// quill editor
+import {QuillModule} from 'ngx-quill';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { UserProfileComponent } from './my-profile/user-profile/user-profile.com
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    QuillModule.forRoot()
   ],
   providers: [
     AuthServicesService,
