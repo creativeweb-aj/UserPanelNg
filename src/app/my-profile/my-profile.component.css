@@ -65,9 +65,8 @@
     justify-content: space-evenly;
 }
 button {
-	outline: none;
+  outline: none;
 }
-
 a {
 	outline: none;
 	text-decoration: none;
