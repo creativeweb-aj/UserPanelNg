@@ -17,7 +17,7 @@ export class PostService {
 
   getCurrentProfile(){
     // get user data
-    let url = "http://192.168.1.101:8000/auth/profile";
+    let url = "http://127.0.0.1:8000/auth/profile";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -30,7 +30,7 @@ export class PostService {
   }
 
   getAllPosts(){
-    let Url: string = 'http://192.168.1.101:8000/secure/posts';
+    let Url: string = 'http://127.0.0.1:8000/secure/posts';
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -48,7 +48,7 @@ export class PostService {
   }
 
   getMyPosts(){
-    let Url: string = 'http://192.168.1.101:8000/secure/my-posts';
+    let Url: string = 'http://127.0.0.1:8000/secure/my-posts';
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -66,7 +66,7 @@ export class PostService {
   }
 
   getPostDetail(postId){
-    let Url: string = 'http://192.168.1.101:8000/secure/post-detail';
+    let Url: string = 'http://127.0.0.1:8000/secure/post-detail';
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -86,7 +86,7 @@ export class PostService {
   }
 
   createPost(data){
-    let Url: string = 'http://192.168.1.101:8000/secure/create-post'
+    let Url: string = 'http://127.0.0.1:8000/secure/create-post'
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -95,7 +95,7 @@ export class PostService {
   }
 
   postLike(data){
-    let Url: string = 'http://192.168.1.101:8000/secure/like-dislike-post'
+    let Url: string = 'http://127.0.0.1:8000/secure/like-dislike-post'
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -104,7 +104,7 @@ export class PostService {
   }
 
   postDelete(data){
-    let Url: string = 'http://192.168.1.101:8000/secure/delete-post'
+    let Url: string = 'http://127.0.0.1:8000/secure/delete-post'
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}

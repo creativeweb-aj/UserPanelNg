@@ -57,7 +57,7 @@ export class EmailverificationComponent implements OnInit {
     this.route.params.subscribe((params: Params) => this.myParam = params['id']);
 
     // get user data
-    let url = "http://192.168.1.101:8000/auth/userdata";
+    let url = "http://127.0.0.1:8000/auth/userdata";
     let data = {
       "userId": this.myParam
     };
@@ -81,7 +81,7 @@ export class EmailverificationComponent implements OnInit {
   }
   
   onSubmit(){
-    let url = "http://192.168.1.101:8000/auth/verification";
+    let url = "http://127.0.0.1:8000/auth/verification";
     let data = {
       "emailId": this.email,
       "otp": this.otp.value

@@ -18,7 +18,7 @@ export class ProfileServiceService {
 
   getCurrentProfile(){
     // get user data
-    let url = "http://192.168.1.101:8000/auth/profile";
+    let url = "http://127.0.0.1:8000/auth/profile";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -31,7 +31,7 @@ export class ProfileServiceService {
   }
 
   updateUserProfile(data){
-    let url = "http://192.168.1.101:8000/auth/edit-profile";
+    let url = "http://127.0.0.1:8000/auth/edit-profile";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -48,7 +48,7 @@ export class ProfileServiceService {
 
   getUserProfile(data){
     // get user data
-    let url = "http://192.168.1.101:8000/auth/user-profile";
+    let url = "http://127.0.0.1:8000/auth/user-profile";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -62,7 +62,7 @@ export class ProfileServiceService {
 
   followUnfollowUser(data){
     // get user data
-    let url = "http://192.168.1.101:8000/auth/follow-user";
+    let url = "http://127.0.0.1:8000/auth/follow-user";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
