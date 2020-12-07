@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { from, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import {Posts} from './posts';
 import { Router } from '@angular/router';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-
+  private API_URL = environment.API_URL
   constructor(
     private http: HttpClient,
-    private router: Router
-    ) { }
+    private router: Router) { }
 
   getCurrentProfile(){
     // get user data
-    let url = "http://127.0.0.1:8000/auth/profile";
+    let url = this.API_URL+"/auth/profile";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -30,7 +30,7 @@ export class PostService {
   }
 
   getAllPosts(){
-    let Url: string = 'http://127.0.0.1:8000/secure/posts';
+    let Url: string = this.API_URL+'/secure/posts';
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -48,7 +48,7 @@ export class PostService {
   }
 
   getMyPosts(){
-    let Url: string = 'http://127.0.0.1:8000/secure/my-posts';
+    let Url: string = this.API_URL+'/secure/my-posts';
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -66,7 +66,7 @@ export class PostService {
   }
 
   getPostDetail(postId){
-    let Url: string = 'http://127.0.0.1:8000/secure/post-detail';
+    let Url: string = this.API_URL+'/secure/post-detail';
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -86,7 +86,7 @@ export class PostService {
   }
 
   createPost(data){
-    let Url: string = 'http://127.0.0.1:8000/secure/create-post'
+    let Url: string = this.API_URL+'/secure/create-post'
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -95,7 +95,7 @@ export class PostService {
   }
 
   postLike(data){
-    let Url: string = 'http://127.0.0.1:8000/secure/like-dislike-post'
+    let Url: string = this.API_URL+'/secure/like-dislike-post'
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -104,7 +104,7 @@ export class PostService {
   }
 
   postDelete(data){
-    let Url: string = 'http://127.0.0.1:8000/secure/delete-post'
+    let Url: string = this.API_URL+'/secure/delete-post'
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}

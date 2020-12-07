@@ -5,9 +5,10 @@ import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { throwError } from 'rxjs';
+import { from, throwError } from 'rxjs';
 import {AuthServicesService} from '../auth-services.service';
 import {AppComponent} from '../app.component';
+import {environment} from '../../environments/environment';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -24,6 +25,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  private API_URL = environment.API_URL
+
   hide = true;
 
   responseData = {
@@ -64,7 +67,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.Authguardservice.getToken()) {   
-      this.router.navigateByUrl("/");  
+      this.router.navigateByUrl("/");
     }
     this.appnavbarlogo.profileImage = 'assets/images/dummyprofile.png';
   }
@@ -72,7 +75,7 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     console.info(this.logIn.value);
     // get user data
-    let url = "http://127.0.0.1:8000/auth/login";
+    let url = this.API_URL+"/auth/login";
     let data = {
       "email": this.userEmail.value,
 	    "password": this.password.value

@@ -6,6 +6,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { AuthServicesService } from '../../auth-services.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-emailverification',
@@ -13,6 +14,7 @@ import { AuthServicesService } from '../../auth-services.service';
   styleUrls: ['./emailverification.component.css']
 })
 export class EmailverificationComponent implements OnInit {
+  private API_URL = environment.API_URL
 
   responseData = {
     status: '',
@@ -57,7 +59,7 @@ export class EmailverificationComponent implements OnInit {
     this.route.params.subscribe((params: Params) => this.myParam = params['id']);
 
     // get user data
-    let url = "http://127.0.0.1:8000/auth/userdata";
+    let url = this.API_URL+"/auth/userdata";
     let data = {
       "userId": this.myParam
     };
@@ -81,7 +83,7 @@ export class EmailverificationComponent implements OnInit {
   }
   
   onSubmit(){
-    let url = "http://127.0.0.1:8000/auth/verification";
+    let url = this.API_URL+"/auth/verification";
     let data = {
       "emailId": this.email,
       "otp": this.otp.value

@@ -6,6 +6,7 @@ import {CustomValidationService} from './validator'
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import {environment} from '../../environments/environment';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { throwError } from 'rxjs';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  private API_URL = environment.API_URL
   hide = true;
 
 
@@ -104,7 +106,7 @@ export class SignupComponent implements OnInit {
     console.info(this.signUp.value);
     let timestamp = (new Date(this.dateOfBirth.value)).getTime() / 1000;
     
-    let url = "http://127.0.0.1:8000/auth/register";
+    let url = this.API_URL+"/auth/register";
     let data = {
       "first_name": this.firstName.value,
       "last_name": this.lastName.value,
