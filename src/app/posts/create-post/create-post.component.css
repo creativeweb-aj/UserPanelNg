@@ -46,3 +46,7 @@
 mage-cropper {
     display: none;
 }
+
+.example-chip-list {
+    width: 100%;
+}
