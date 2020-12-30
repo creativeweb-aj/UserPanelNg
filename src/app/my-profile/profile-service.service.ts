@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
+import { from, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileServiceService {
-
+  private API_URL = environment.API_URL
   constructor(
     private http: HttpClient,
     private router: Router,
-    private _snackBar: MatSnackBar,
-  ) { }
+    private _snackBar: MatSnackBar) { }
 
   getCurrentProfile(){
     // get user data
-    let url = "http://127.0.0.1:8000/auth/profile";
+    let url = this.API_URL+"/auth/profile";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -31,7 +31,7 @@ export class ProfileServiceService {
   }
 
   updateUserProfile(data){
-    let url = "http://127.0.0.1:8000/auth/edit-profile";
+    let url = this.API_URL+"/auth/edit-profile";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -48,7 +48,7 @@ export class ProfileServiceService {
 
   getUserProfile(data){
     // get user data
-    let url = "http://127.0.0.1:8000/auth/user-profile";
+    let url = this.API_URL+"/auth/user-profile";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
@@ -62,7 +62,7 @@ export class ProfileServiceService {
 
   followUnfollowUser(data){
     // get user data
-    let url = "http://127.0.0.1:8000/auth/follow-user";
+    let url = this.API_URL+"/auth/follow-user";
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}

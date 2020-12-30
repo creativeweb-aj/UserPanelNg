@@ -15,7 +15,6 @@ export class PostDetailsComponent implements OnInit {
         title: '',
         content: '',
         post_image: '',
-        hash_tag: '',
         likes: '',
         liked_by: [],
         isLiked: '',

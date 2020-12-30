@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { PostService } from '../post.service';
-import {EditorChangeContent, EditorChangeSelection} from 'ngx-quill';
 
+export interface Fruit {
+  name: string;
+}
 
 @Component({
   selector: 'app-create-post',
@@ -19,8 +21,7 @@ export class CreatePostComponent implements OnInit {
     response: {
       title: '',
       content: '',
-      postImage: '',
-      hashTag: ''
+      postImage: ''
     },
     message: ''
   };
@@ -33,9 +34,6 @@ export class CreatePostComponent implements OnInit {
       Validators.required,
     ]),
     postImageField : new FormControl('', [
-      Validators.required,
-    ]),
-    hashTagField : new FormControl('', [
       Validators.required,
     ])
   })
@@ -52,10 +50,6 @@ export class CreatePostComponent implements OnInit {
     return this.createPost.get('postImageField')
   }
 
-  get hashTag(){
-    return this.createPost.get('hashTagField')
-  }
-
   constructor(
     private createPostForm: FormBuilder,
     private postService: PostService,
@@ -65,10 +59,6 @@ export class CreatePostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  }
-
-  changeEditor(e: EditorChangeContent | EditorChangeSelection){
-    console.info(e);
   }
 
   imgUrl = 'assets/images/profilepic.png';
@@ -93,7 +83,6 @@ export class CreatePostComponent implements OnInit {
     formData.append('title', this.title.value)
     formData.append('content', this.content.value)
     formData.append('postImage', this.postFile)
-    formData.append('hashTag', this.hashTag.value)
     this.postService.createPost(formData)
     .pipe(
       catchError(err => {

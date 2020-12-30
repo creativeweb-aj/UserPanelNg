@@ -13,16 +13,6 @@
         </a>
       </mat-card-subtitle>
       <mat-card-subtitle class="datetime">{{ convertInt(post.created_on) | date:'medium'}}</mat-card-subtitle>
-      <!-- <div class="dot-flex-container">
-        <div class="dot-button-container">
-          <button mat-icon-button matTooltip="Action" [matMenuTriggerFor]="action" aria-label="three dot icon">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #action="matMenu" xPosition="before">
-            <button mat-menu-item (click)="deletePost(post.id)">Delete</button>
-          </mat-menu>
-        </div>
-      </div> -->
     </mat-card-header>
     <img class="post-image" routerLink="/post/{{post.id}}" mat-card-image src="{{post.post_image}}" alt="Photo of a Shiba Inu">
     <mat-card-content>
@@ -40,7 +30,7 @@
           favorite_border
         </mat-icon>
       </button>
-      <button mat-button>SHARE</button>
+      <!-- <button mat-button>SHARE</button> -->
     </mat-card-actions>
   </mat-card>
 </div>
