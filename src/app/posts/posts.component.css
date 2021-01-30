@@ -1,5 +1,7 @@
 .posts-card {
-    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
     margin-bottom: 20px;
 }
 
@@ -37,6 +39,7 @@
 .posts-card .post-image {
     cursor: pointer;
     outline: none;
+    width: 100%
 }
 
 .postedby {
