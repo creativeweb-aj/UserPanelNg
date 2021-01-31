@@ -5,7 +5,11 @@
             <img src="{{post.created_by.profile_picture}}" alt="user profile">
           </div>
           <mat-card-title routerLink="/post/{{post.id}}">{{post.title}}</mat-card-title>
-          <mat-card-subtitle class="postedby">Posted By {{post.created_by.first_name}} {{post.created_by.last_name}}</mat-card-subtitle>
+          <mat-card-subtitle class="postedby">Posted By 
+            <a routerLink="/user-profile/{{post.created_by.id}}" color="primary">
+              {{post.created_by.first_name}} {{post.created_by.last_name}}
+            </a>
+          </mat-card-subtitle>
           <mat-card-subtitle class="datetime">{{ convertInt(post.created_on) | date:'medium'}}</mat-card-subtitle>
           
           <div class="dot-flex-container">
