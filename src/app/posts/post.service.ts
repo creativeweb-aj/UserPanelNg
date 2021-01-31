@@ -37,7 +37,6 @@ export class PostService {
     );
     return this.http.get<Posts[]>(Url, {headers: header}).pipe(
       catchError(err => {
-        debugger
         if(err.status == 401){
           localStorage.removeItem('UserToken')
           this.router.navigate(['/login']);
@@ -55,7 +54,6 @@ export class PostService {
     );
     return this.http.get<Posts[]>(Url, {headers: header}).pipe(
       catchError(err => {
-        debugger
         if(err.status == 401){
           localStorage.removeItem('UserToken')
           this.router.navigate(['/login']);

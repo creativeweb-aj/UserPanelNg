@@ -88,7 +88,6 @@ export class EmailverificationComponent implements OnInit {
       "emailId": this.email,
       "otp": this.otp.value
     };
-    debugger
     this.http.post(url, data)
     .pipe(
       catchError(err => {
@@ -99,7 +98,6 @@ export class EmailverificationComponent implements OnInit {
         })
     )
     .subscribe((response: any)=>{
-      debugger
       this.responseData = response;
       if(this.responseData.status == "SUCCESS"){
         console.info(this.responseData);
