@@ -29,13 +29,13 @@ export class PostService {
       )
   }
 
-  getAllPosts(){
+  getAllPosts(data){
     let Url: string = this.API_URL+'/secure/posts';
     let token = localStorage.getItem("UserToken");
     let header = new HttpHeaders(
       {'Authorization': 'token '+ token}
     );
-    return this.http.get<Posts[]>(Url, {headers: header}).pipe(
+    return this.http.post<Posts[]>(Url, data, {headers: header}).pipe(
       catchError(err => {
         if(err.status == 401){
           localStorage.removeItem('UserToken')
