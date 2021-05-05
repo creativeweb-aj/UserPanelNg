@@ -29,6 +29,12 @@ export class PostsComponent implements OnInit {
     message: ''
   };
 
+  responsePostData = {
+    status: '',
+    response: [],
+    message: ''
+  };
+
 
   constructor(
     private appnavbarlogo: AppComponent,
@@ -43,9 +49,15 @@ export class PostsComponent implements OnInit {
   }
 
   loadPosts(){
-    this.postService.getAllPosts().subscribe((res: any) => {
+    let data = {
+      "search": ""
+    }
+    this.postService.getAllPosts(data).subscribe((res: any) => {
       console.info(res);
-      this.PostsData = res;
+      this.responsePostData = res;
+      if(this.responsePostData.status == "SUCCESS"){
+        this.PostsData = this.responsePostData.response;
+      }
     })
   }
 
