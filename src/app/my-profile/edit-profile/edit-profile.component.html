@@ -42,13 +42,13 @@
       </mat-form-field>
       <mat-form-field class="profile-full-width" appearance="outline">
         <mat-label>Contact</mat-label>
-        <input matInput placeholder="Contact" formControlName="contactInfoField">
+        <input matInput placeholder="Contact" formControlName="contactInfoField" (keypress)="inputTypeNumber($event)">
         <mat-icon matSuffix aria-hidden="false" aria-label="contact icon">contact_phone</mat-icon>
         <mat-error *ngIf="(contactInfo.errors?.required)">
             Contact is <strong>required</strong>
         </mat-error>
         <mat-error *ngIf="(contactInfo.errors?.pattern)">
-          Contact is <strong>number only</strong>
+          Contact is <strong>number only and 10 digit max length</strong>
         </mat-error>
       </mat-form-field>
       <div class="profile-full-width">

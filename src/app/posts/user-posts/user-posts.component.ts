@@ -24,6 +24,12 @@ export class UserPostsComponent implements OnInit {
     message: ''
   };
 
+  responsePostData = {
+    status: '',
+    response: [],
+    message: ''
+  };
+
   constructor(
     private postService: PostService,
     private _snackBar: MatSnackBar,
@@ -37,7 +43,10 @@ export class UserPostsComponent implements OnInit {
   loadUserPosts(){
     this.postService.getMyPosts().subscribe((res: any) => {
       console.info(res);
-      this.PostsData = res;
+      this.responsePostData = res
+      if(this.responsePostData.status == "SUCCESS"){
+        this.PostsData = this.responsePostData.response;
+      }
     })
   }
 

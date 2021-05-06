@@ -47,7 +47,8 @@ export class EditProfileComponent implements OnInit {
     ]),
     contactInfoField : new FormControl('', [
       Validators.required,
-      Validators.pattern('^(0|[1-9][0-9]*)$'),
+      Validators.maxLength(10),
+      Validators.pattern(/^[0-9]{10}$/)
     ]),
   })
 
@@ -73,6 +74,18 @@ export class EditProfileComponent implements OnInit {
 
   get contactInfo(){
     return this.editProfile.get('contactInfoField')
+  }
+
+  // Input Type number check on keypress
+  inputTypeNumber(event){
+    var charCode = (event.which) ? event.which : event.keyCode;
+    // Only Numbers 0-9
+    if ((charCode < 48 || charCode > 57)) {
+      event.preventDefault();
+      return false;
+    } else {
+      return true;
+    }
   }
 
   

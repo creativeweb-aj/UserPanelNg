@@ -33,6 +33,7 @@ export class SignupComponent implements OnInit {
     emailFormControl : new FormControl('', [
       Validators.required,
       Validators.email,
+      Validators.pattern(/^[^\.][a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)
     ]),
     firstNameFormControl : new FormControl('', [
       Validators.required,

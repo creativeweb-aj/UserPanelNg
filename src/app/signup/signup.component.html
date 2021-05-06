@@ -29,6 +29,9 @@
         <mat-error *ngIf="(userEmail.errors?.required)">
           Email is <strong>required</strong>
         </mat-error>
+        <mat-error  *ngIf="(userEmail.errors.pattern)">
+          Please enter a valid email address
+        </mat-error >
       </mat-form-field>
       <mat-form-field class="singup-full-width" appearance="outline">
         <mat-label>Date of Birth *</mat-label>
