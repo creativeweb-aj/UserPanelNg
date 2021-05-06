@@ -5,3 +5,53 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 a, button { outline: none !important; }
 a:hover { text-decoration: none !important; }
 a, button:focus { outline: none !important; }
+
+mat-card {
+    width: 40% !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+mat-card mat-card-header a{
+    text-decoration: none;
+}
+
+mat-card mat-card-header img{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+mat-card mat-card-title {
+    cursor: pointer;
+    outline: none;
+}
+
+mat-card mat-card-header mat-card-subtitle {
+    margin-bottom: 5px !important;
+}
+
+mat-card-content p{
+    margin-top: 10px;
+}
+
+mat-card .card-image{
+    margin-top: 0px !important;
+}
+
+.datetime {
+    font-size: 10px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    mat-card {
+        width: 100% !important;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+        margin-bottom: 20px;
+    }
+}

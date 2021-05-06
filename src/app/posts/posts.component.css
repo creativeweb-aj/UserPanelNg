@@ -1,18 +1,11 @@
-.posts-card {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: 20px;
+.dot-button-container {
+    display: flex;
+    justify-content: center;
 }
-
-.posts-card mat-card-header a{
-    text-decoration: none;
-}
-
-.posts-header-image img{
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+.dot-button-container button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .create-flex-container {
@@ -29,35 +22,4 @@
     position: fixed;
     bottom: 40px;
     right: 30px;
-}
-
-.posts-card mat-card-title {
-    cursor: pointer;
-    outline: none;
-}
-
-.posts-card .post-image {
-    cursor: pointer;
-    outline: none;
-    width: 100%;
-}
-
-.postedby {
-    margin: 7px 0px;
-    font-size: 14px;
-    font-weight: 500;
-}
- 
-.datetime {
-    font-size: 12px;
-}
-
-.dot-button-container {
-    display: flex;
-    justify-content: center;
-}
-.dot-button-container button{
-    position: absolute;
-    top: 10px;
-    right: 10px;
 }
